@@ -5,12 +5,12 @@ namespace M2TIIL\TripBookerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Trip
+ * TripStep
  *
- * @ORM\Table(name="trip")
- * @ORM\Entity(repositoryClass="M2TIIL\TripBookerBundle\Entity\TripRepository")
+ * @ORM\Table(name="trip_step")
+ * @ORM\Entity(repositoryClass="M2TIIL\TripBookerBundle\Entity\TripStepRepository")
  */
-class Trip
+class TripStep
 {
     /**
      * @var integer
@@ -29,6 +29,27 @@ class Trip
     private $title;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text")
+     */
+    private $text;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="startCity", type="string", length=255)
+     */
+    private $startCity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="endCity", type="string", length=255)
+     */
+    private $endCity;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="startDate", type="time")
@@ -43,20 +64,11 @@ class Trip
     private $endDate;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="text", type="text")
-     */
-    private $text;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="price", type="float")
      */
     private $price;
-
-    
 
 
     /**
@@ -73,7 +85,7 @@ class Trip
      * Set title
      *
      * @param string $title
-     * @return Trip
+     * @return TripStep
      */
     public function setTitle($title)
     {
@@ -93,10 +105,79 @@ class Trip
     }
 
     /**
+     * Set text
+     *
+     * @param string $text
+     * @return TripStep
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text
+     *
+     * @return string 
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * Set startCity
+     *
+     * @param string $startCity
+     * @return TripStep
+     */
+    public function setStartCity($startCity)
+    {
+        $this->startCity = $startCity;
+
+        return $this;
+    }
+
+    /**
+     * Get startCity
+     *
+     * @return string 
+     */
+    public function getStartCity()
+    {
+        return $this->startCity;
+    }
+
+    /**
+     * Set endCity
+     *
+     * @param string $endCity
+     * @return TripStep
+     */
+    public function setEndCity($endCity)
+    {
+        $this->endCity = $endCity;
+
+        return $this;
+    }
+
+    /**
+     * Get endCity
+     *
+     * @return string 
+     */
+    public function getEndCity()
+    {
+        return $this->endCity;
+    }
+
+    /**
      * Set startDate
      *
      * @param \DateTime $startDate
-     * @return Trip
+     * @return TripStep
      */
     public function setStartDate($startDate)
     {
@@ -119,7 +200,7 @@ class Trip
      * Set endDate
      *
      * @param \DateTime $endDate
-     * @return Trip
+     * @return TripStep
      */
     public function setEndDate($endDate)
     {
@@ -139,33 +220,10 @@ class Trip
     }
 
     /**
-     * Set text
-     *
-     * @param string $text
-     * @return Trip
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * Get text
-     *
-     * @return string 
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
-    /**
      * Set price
      *
      * @param float $price
-     * @return Trip
+     * @return TripStep
      */
     public function setPrice($price)
     {

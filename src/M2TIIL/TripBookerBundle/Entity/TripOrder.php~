@@ -96,27 +96,4 @@ class TripOrder
     {
         return $this->order;
     }
-
-    /**
-     * Set trip
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\Trip $trip
-     * @return TripOrder
-     */
-    public function setTrip(\M2TIIL\TripBookerBundle\Entity\Trip $trip = null)
-    {
-        $this->trip = $trip;
-
-        return $this;
-    }
-
-    /**
-     * Get trip
-     *
-     * @return \M2TIIL\TripBookerBundle\Entity\Trip 
-     */
-    public function getTrip()
-    {
-        return $this->trip;
-    }
 }

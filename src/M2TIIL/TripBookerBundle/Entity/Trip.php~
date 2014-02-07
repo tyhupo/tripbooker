@@ -56,8 +56,6 @@ class Trip
      */
     private $price;
 
-    
-
 
     /**
      * Get id
