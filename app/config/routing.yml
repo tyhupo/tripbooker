@@ -1,0 +1,4 @@
+m2_tiil_trip_booker:
+    resource: "@M2TIILTripBookerBundle/Resources/config/routing.yml"
+    prefix:   /
+
