@@ -12,6 +12,11 @@ php app/console doctrine:schema:update --dump-sql
 pour s'assurer que tout va bien, puis, pour appliquer les requêts, un 
 php app/console doctrine:schema:update --dump-sql
 
+Il faut aussi faire :
+php app/console assets:install web
+
+Un petit php app/console cache:clear pour finir.
+
 Et tout devrait rouler !
 
 Peace.

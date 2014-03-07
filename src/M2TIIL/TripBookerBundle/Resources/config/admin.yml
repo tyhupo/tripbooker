@@ -1,0 +1,11 @@
+services:
+    sonata.admin.category:
+        class: M2TIIL\TripBookerBundle\Admin\TripCategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Catégorie de voyage" }
+        arguments:
+            - ~
+            - M2TIIL\TripBookerBundle\Entity\TripCategory
+            - ~
+        calls:
+            - [ setTranslationDomain, [M2TIILTripBookerBundle]]
