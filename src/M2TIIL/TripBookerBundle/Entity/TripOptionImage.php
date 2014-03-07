@@ -5,12 +5,12 @@ namespace M2TIIL\TripBookerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Conveyance
+ * TripOptionImage
  *
- * @ORM\Table(name="conveyance")
- * @ORM\Entity(repositoryClass="M2TIIL\TripBookerBundle\Entity\ConveyanceRepository")
+ * @ORM\Table(name="trip_option_image")
+ * @ORM\Entity(repositoryClass="M2TIIL\TripBookerBundle\Entity\TripOptionImageRepository")
  */
-class Conveyance
+class TripOptionImage
 {
     /**
      * @var integer
@@ -29,15 +29,17 @@ class Conveyance
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="conveyances", cascade={"remove"})
-     * @ORM\JoinColumn(name="conveyance_id", referencedColumnName="id") 
+     * @var string
+     *
+     * @ORM\Column(name="uri", type="string", length=255)
      */
-    protected $trip;
+    private $uri;
 
     /**
-     * @ORM\OneToMany(targetEntity="ConveyanceOption", mappedBy="conveyance", cascade={"remove","persist"}) 
+     * @ORM\ManyToOne(targetEntity="TripOption", inversedBy="images", cascade={"remove"})
+     * @ORM\JoinColumn(name="trip_option_image_id", referencedColumnName="id") 
      */
-    protected $conveyancesOptions;
+    protected $tripOption;
 
 
     /**
@@ -54,7 +56,7 @@ class Conveyance
      * Set title
      *
      * @param string $title
-     * @return Conveyance
+     * @return TripOptionImage
      */
     public function setTitle($title)
     {
@@ -71,5 +73,28 @@ class Conveyance
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set uri
+     *
+     * @param string $uri
+     * @return TripOptionImage
+     */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+
+        return $this;
+    }
+
+    /**
+     * Get uri
+     *
+     * @return string 
+     */
+    public function getUri()
+    {
+        return $this->uri;
     }
 }

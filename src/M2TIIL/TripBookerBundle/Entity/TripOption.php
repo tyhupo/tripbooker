@@ -42,6 +42,17 @@ class TripOption
      */
     private $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="options", cascade={"remove"})
+     * @ORM\JoinColumn(name="trip_option_id", referencedColumnName="id") 
+     */
+    protected $trip;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TripOptionImage", mappedBy="tripOption", cascade={"remove","persist"}) 
+     */
+    protected $images;
+
 
     /**
      * Get id
