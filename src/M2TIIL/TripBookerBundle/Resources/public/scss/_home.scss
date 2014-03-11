@@ -1,0 +1,145 @@
+#section-1{
+	background-color: $gray;
+	padding-top: 40px;
+	.block-reservation{
+		width: 445px;
+		background-color: $blue;
+		padding-top: 20px;
+		padding-left: 30px;
+		font-family: "segoe";
+
+		display: inline-block;
+		vertical-align: top;
+
+		h2{
+			font-weight: bold;
+			font-size: 26px;
+			color: white;
+			margin-bottom: 25px;
+		}
+
+		form{
+			font-weight: bold;
+
+			.form-select-travel{
+				margin-bottom: 20px;
+			}
+
+			input[type=text]{
+				width: 190px;
+				height: 40px;
+				font-size: 21px;
+				border: none;
+				color: $blue;
+				margin-bottom: 20px;
+				padding-left: 50px;
+				font-weight: bold;
+
+				&[name=start-date],
+				&[name=end-date]{
+					margin-left: 30px;
+				}
+			}
+
+			select{
+				width: 215px;
+				height: 30px;
+				font-size: 21px;
+				font-weight: bold;
+				line-height: 30px;
+				padding-left: 10px;
+				color: $blue;
+			}
+
+			input[type=submit]{
+				width: 145px;
+				height: 40px;
+				line-height: 40px;
+				background-color: $orange;
+				color: white;
+				font-size: 21px;
+				margin-top: 20px;
+				margin-left: 60%;
+				margin-bottom: 15px;
+				border: none;
+			}
+		}
+	}
+
+	.home-text{
+		width: 400px;
+		margin-left: 45px;
+		display: inline-block;
+		vertical-align: top;
+		color: $blue;
+		font-family: "segoe";
+
+		h1{
+			font-size: 35px;
+			line-height: 40px;
+			margin-bottom: 10px;
+		}
+
+		p{
+			line-height: 26px;
+			font-size: 22px;
+			margin-bottom: 40px;
+		}
+
+	}
+}
+
+#section-2{
+	background-color: $green;
+	padding-top: 20px;
+	padding-left: 10px;
+	h1{
+		font-size: 35px;
+		font-family: "segoe";
+		color: $gray;
+		margin-bottom: 25px;
+	}
+	li{
+		width: 250px;
+		margin-right: 70px;
+
+		display: inline-block;
+		vertical-align: top;
+		font-family: "segoe";
+
+		&:nth-child(3){
+			margin-right: 0;
+		}
+
+		.slider-travel-promo-infos{
+			height: 55px;
+			background-color: $blue;
+			padding-left: 20px;
+			padding-top: 10px;
+
+			.titre{
+				font-size: 24px;
+				line-height: 26px;
+				display: block;
+				color: $gray;
+			}
+
+			.date{
+				font-size: 18px;
+				margin-top: 10px;
+				color: $gray;
+			}
+		}
+
+		.slider-travel-promo-price{
+			height: 30px;
+			display: block;
+			background-color: $gray;
+			font-size: 22px;
+			color: $blue;
+			text-align: right;
+			padding-right: 10px;
+		}
+	}
+	
+}
