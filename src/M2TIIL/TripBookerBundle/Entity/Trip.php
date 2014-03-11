@@ -56,7 +56,25 @@ class Trip
      */
     private $price;
 
-    
+    /**
+     * @ORM\ManyToMany(targetEntity="TripCategory") 
+     */
+    protected $categories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Conveyance", mappedBy="trip", cascade={"remove","persist"}) 
+     */
+    protected $conveyances;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TripOption", mappedBy="trip", cascade={"remove","persist"}) 
+     */
+    protected $options;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TripImage", mappedBy="trip", cascade={"remove","persist"}) 
+     */
+    protected $images;
 
 
     /**

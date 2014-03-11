@@ -70,6 +70,11 @@ class TripStep
      */
     private $price;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TripImage", mappedBy="tripStep", cascade={"remove","persist"}) 
+     */
+    protected $images;
+
 
     /**
      * Get id

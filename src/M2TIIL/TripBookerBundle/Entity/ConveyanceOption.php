@@ -42,6 +42,12 @@ class ConveyanceOption
      */
     private $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Conveyance", inversedBy="conveyanceOptions", cascade={"remove"})
+     * @ORM\JoinColumn(name="conveyance_option_id", referencedColumnName="id") 
+     */
+    protected $conveyance;
+
 
     /**
      * Get id
