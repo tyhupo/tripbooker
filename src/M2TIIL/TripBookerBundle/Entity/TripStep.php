@@ -75,6 +75,12 @@ class TripStep
      */
     protected $images;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="steps", cascade={"remove"})
+     * @ORM\JoinColumn(name="trip_step_id", referencedColumnName="id") 
+     */
+    protected $trip;
+
 
     /**
      * Get id
@@ -245,5 +251,68 @@ class TripStep
     public function getPrice()
     {
         return $this->price;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add images
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $images
+     * @return TripStep
+     */
+    public function addImage(\M2TIIL\TripBookerBundle\Entity\TripImage $images)
+    {
+        $this->images[] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $images
+     */
+    public function removeImage(\M2TIIL\TripBookerBundle\Entity\TripImage $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set trip
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\Trip $trip
+     * @return TripStep
+     */
+    public function setTrip(\M2TIIL\TripBookerBundle\Entity\Trip $trip = null)
+    {
+        $this->trip = $trip;
+
+        return $this;
+    }
+
+    /**
+     * Get trip
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\Trip 
+     */
+    public function getTrip()
+    {
+        return $this->trip;
     }
 }
