@@ -29,9 +29,6 @@ class TripCategory
     private $title;
 
 
-    /**
-     * To string
-     */
     public function __toString() {
         return $this->title;
     }

@@ -132,4 +132,67 @@ class TripOption
     {
         return $this->price;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set trip
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\Trip $trip
+     * @return TripOption
+     */
+    public function setTrip(\M2TIIL\TripBookerBundle\Entity\Trip $trip = null)
+    {
+        $this->trip = $trip;
+
+        return $this;
+    }
+
+    /**
+     * Get trip
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\Trip 
+     */
+    public function getTrip()
+    {
+        return $this->trip;
+    }
+
+    /**
+     * Add images
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripOptionImage $images
+     * @return TripOption
+     */
+    public function addImage(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $images)
+    {
+        $this->images[] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripOptionImage $images
+     */
+    public function removeImage(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
 }
