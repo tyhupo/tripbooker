@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="trip_option_image")
  * @ORM\Entity(repositoryClass="M2TIIL\TripBookerBundle\Entity\TripOptionImageRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class TripOptionImage
 {
@@ -35,11 +36,8 @@ class TripOptionImage
      */
     private $uri;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="TripOption", inversedBy="images", cascade={"remove"})
-     * @ORM\JoinColumn(name="trip_option_image_id", referencedColumnName="id") 
-     */
-    protected $tripOption;
+    private $file;
+    private $tempFilename;
 
 
     /**
@@ -99,25 +97,135 @@ class TripOptionImage
     }
 
     /**
-     * Set tripOption
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripOption $tripOption
-     * @return TripOptionImage
-     */
-    public function setTripOption(\M2TIIL\TripBookerBundle\Entity\TripOption $tripOption = null)
-    {
-        $this->tripOption = $tripOption;
 
-        return $this;
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+    */
+    public function preUpload()
+    {
+        // Si jamais il n'y a pas de fichier (champ facultatif)
+        if (null === $this->file) {
+            return;
+        }
+
+        // Le nom du fichier est son id, on doit juste stocker également son extension
+        // Pour faire propre, on devrait renommer cet attribut en "extension", plutôt que "uri"
+        $this->uri = $this->file->guessExtension();
+
+        // Et on génère l'attribut title de la balise <img>, à la valeur du nom du fichier sur le PC de l'internaute
+        $this->title = $this->file->getClientOriginalName();
     }
 
     /**
-     * Get tripOption
-     *
-     * @return \M2TIIL\TripBookerBundle\Entity\TripOption 
-     */
-    public function getTripOption()
+    * @ORM\PostPersist
+    * @ORM\PostUpdate
+    */
+    public function upload()
     {
-        return $this->tripOption;
+        // Si jamais il n'y a pas de fichier (champ facultatif)
+        if (null === $this->file) {
+            return;
+        }
+
+        $nonRetinaImgPath = '../../uploads/'.$this->id.'.'.$this->uri;
+        $retinaImgPath = '../../uploads/'.$this->id.'-2x.'.$this->uri;
+        $tabletImgPath = '../../uploads/'.$this->id.'-tablet.'.$this->uri;
+
+        // Si on avait un ancien fichier, on le supprime
+        if (null !== $this->tempFilename) {
+            $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
+        }
+
+        // On déplace le fichier envoyé dans le répertoire de notre choix
+        $this->file->move(
+            $this->getUploadRootDir(), // Le répertoire de destination
+            $this->id.'.'.$this->uri   // Le nom du fichier à créer, ici "id.extension"
+        );
+        $path = $this->getUploadRootDir().$this->id.'-origin.'.$this->uri;
+    }
+
+
+    /**
+    * @ORM\PreRemove
+    */
+    public function preRemoveUpload()
+    {
+        $nonRetinaImgPath = '../../uploads/'.$this->id.'.'.$this->uri;
+        $retinaImgPath = '../../uploads/'.$this->id.'-2x.'.$this->uri;
+        $tabletImgPath = '../../uploads/'.$this->id.'-tablet.'.$this->uri;
+
+        // On sauvegarde temporairement le nom du fichier car il dépend de l'id
+        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->uri;
+    }
+
+    /**
+    * @ORM\PostRemove
+    */
+    public function removeUpload()
+    {
+        // En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
+        if (file_exists($this->tempFilename)) 
+        {
+            // On supprime le fichier
+            unlink($this->tempFilename);
+        }
+    }
+
+    /**
+     * Retourne le chemin relatif complet vers l'image pour un navigateur
+     */
+    public function getWebPath()
+    {
+        return $this->getUploadDir().$this->getId().'.'.$this->geturi();
+    }
+
+    /**
+     * Retourne le chemin relatif vers l'image pour un navigateur
+     */
+    public function getUploadDir()
+    {
+        return 'uploads/';
+    }
+
+
+    /**
+     * Retourne le chemin relatif vers l'image pour le code PHP
+     */
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * Get file
+     *
+     * @return file
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set file
+     *
+     * @param file $file
+     * @return Picture
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        if ($this->uri !== null)
+        {
+            $this->tempFilename = $this->uri;
+            $this->uri = null;
+            $this->title = null;
+        }
+
+        return $this;
     }
 }

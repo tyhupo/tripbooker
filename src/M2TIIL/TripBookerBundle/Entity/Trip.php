@@ -62,12 +62,17 @@ class Trip
     protected $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="Conveyance", mappedBy="trip", cascade={"remove","persist"}) 
+     * @ORM\ManyToMany(targetEntity="Conveyance") 
      */
     protected $conveyances;
 
     /**
-     * @ORM\OneToMany(targetEntity="TripOption", mappedBy="trip", cascade={"remove","persist"}) 
+     * @ORM\ManyToMany(targetEntity="ConveyanceOption") 
+     */
+    private $conveyancesOptions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="TripOption") 
      */
     protected $options;
 
@@ -80,6 +85,7 @@ class Trip
      * @ORM\OneToMany(targetEntity="TripStep", mappedBy="trip", cascade={"remove","persist"}) 
      */
     protected $steps;
+
 
 
     /**
@@ -382,5 +388,38 @@ class Trip
     public function getSteps()
     {
         return $this->steps;
+    }
+
+    /**
+     * Add conveyancesOptions
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions
+     * @return Trip
+     */
+    public function addConveyancesOption(\M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions)
+    {
+        $this->conveyancesOptions[] = $conveyancesOptions;
+
+        return $this;
+    }
+
+    /**
+     * Remove conveyancesOptions
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions
+     */
+    public function removeConveyancesOption(\M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions)
+    {
+        $this->conveyancesOptions->removeElement($conveyancesOptions);
+    }
+
+    /**
+     * Get conveyancesOptions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getConveyancesOptions()
+    {
+        return $this->conveyancesOptions;
     }
 }

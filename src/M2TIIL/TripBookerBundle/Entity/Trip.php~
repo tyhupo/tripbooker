@@ -62,7 +62,7 @@ class Trip
     protected $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="Conveyance", mappedBy="trip", cascade={"remove","persist"}) 
+     * @ORM\ManyToMany(targetEntity="Conveyance") 
      */
     protected $conveyances;
 
@@ -80,6 +80,11 @@ class Trip
      * @ORM\OneToMany(targetEntity="TripStep", mappedBy="trip", cascade={"remove","persist"}) 
      */
     protected $steps;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ConveyanceOption") 
+     */
+    private $conveyancesOptions;
 
 
     /**

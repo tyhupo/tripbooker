@@ -43,16 +43,18 @@ class TripOption
     private $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="options", cascade={"remove"})
-     * @ORM\JoinColumn(name="trip_option_id", referencedColumnName="id") 
-     */
-    protected $trip;
-
-    /**
-     * @ORM\OneToMany(targetEntity="TripOptionImage", mappedBy="tripOption", cascade={"remove","persist"}) 
+     * @ORM\OneToOne(targetEntity="TripOptionImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
     protected $images;
 
+
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
 
     /**
      * Get id
@@ -137,59 +139,25 @@ class TripOption
      */
     public function __construct()
     {
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Set trip
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\Trip $trip
-     * @return TripOption
-     */
-    public function setTrip(\M2TIIL\TripBookerBundle\Entity\Trip $trip = null)
-    {
-        $this->trip = $trip;
-
-        return $this;
-    }
-
-    /**
-     * Get trip
-     *
-     * @return \M2TIIL\TripBookerBundle\Entity\Trip 
-     */
-    public function getTrip()
-    {
-        return $this->trip;
-    }
-
-    /**
-     * Add images
+     * Set images
      *
      * @param \M2TIIL\TripBookerBundle\Entity\TripOptionImage $images
      * @return TripOption
      */
-    public function addImage(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $images)
+    public function setImages(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $images = null)
     {
-        $this->images[] = $images;
+        $this->images = $images;
 
         return $this;
-    }
-
-    /**
-     * Remove images
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripOptionImage $images
-     */
-    public function removeImage(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $images)
-    {
-        $this->images->removeElement($images);
     }
 
     /**
      * Get images
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \M2TIIL\TripBookerBundle\Entity\TripOptionImage 
      */
     public function getImages()
     {

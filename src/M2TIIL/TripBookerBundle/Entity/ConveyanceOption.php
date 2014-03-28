@@ -42,11 +42,6 @@ class ConveyanceOption
      */
     private $price;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Conveyance", inversedBy="conveyancesOptions", cascade={"remove"})
-     * @ORM\JoinColumn(name="conveyance_option_id", referencedColumnName="id") 
-     */
-    private $conveyance;
 
     /**
      * To string
@@ -133,28 +128,5 @@ class ConveyanceOption
     public function getPrice()
     {
         return $this->price;
-    }
-
-    /**
-     * Set conveyance
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\Conveyance $conveyance
-     * @return ConveyanceOption
-     */
-    public function setConveyance(\M2TIIL\TripBookerBundle\Entity\Conveyance $conveyance = null)
-    {
-        $this->conveyance = $conveyance;
-
-        return $this;
-    }
-
-    /**
-     * Get conveyance
-     *
-     * @return \M2TIIL\TripBookerBundle\Entity\Conveyance 
-     */
-    public function getConveyance()
-    {
-        return $this->conveyance;
     }
 }

@@ -7,16 +7,27 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class ConveyanceAdmin extends Admin
+class TripOptionAdmin extends Admin
 {
 	// Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text', array('label' => 'Titre'))         
+            ->add('title', 'text', array('label' => 'Titre'))
+            ->add('text', 'textarea', array(
+                'label' => 'Texte', 
+                'attr' => array(
+                    'rows' => 10,
+                    'cols' => 50,
+                ),
+            ))
+            ->add('price', 'number', array(
+                'label' => 'Prix',
+            ))
+            ->add('images', 'sonata_type_admin', array(
+                'label' => 'Image',
+            ), array('edit' => 'inline'))
         ;
-
-        //die(count($object->getConveyancesOptions()));
     }
 
     // Fields to be shown on filter forms
