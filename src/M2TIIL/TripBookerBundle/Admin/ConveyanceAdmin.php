@@ -48,13 +48,19 @@ class ConveyanceAdmin extends Admin
 
     public function preUpdate($object)
     {
+        $newConveyanceOptions = $object->getConveyancesOptions();
+
         // On met à jour la référence vers le moyen de transport en cours d'édition dans les options sélectionnées
-        foreach ($object->getConveyancesOptions() as $option) {
+        foreach ($newConveyanceOptions as $option) {
             $option->setConveyance($object);
         }
 
         // Les options liées à ce moyen de transport qui ne le sont plus doivent être supprimées
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-        $conveyanceOptions = $em->getRepository('M2TIILTripBookerBundle:ConveyanceOption');
+        $conveyanceOptions = $em->getRepository('M2TIILTripBookerBundle:ConveyanceOption')->findAll();
+        foreach ($conveyanceOptions as $option) {
+            if ($option->getConveyance() == $object && !in_array($option, $newConveyanceOptions))
+                $option->setConveyance(null);
+        }
     }
 }
