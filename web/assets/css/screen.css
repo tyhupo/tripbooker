@@ -151,6 +151,11 @@ html.not-front body {
   background-color: #2980b9;
 }
 
+#header-slider .owl-controls {
+  position: relative;
+  top: -50px;
+}
+
 #section-1 {
   background-color: #ecf0f1;
   padding-top: 40px;
