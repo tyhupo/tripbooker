@@ -62,21 +62,6 @@ class Trip
     protected $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Conveyance") 
-     */
-    protected $conveyances;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="ConveyanceOption") 
-     */
-    private $conveyancesOptions;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="TripOption") 
-     */
-    protected $options;
-
-    /**
      * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
      * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
@@ -95,8 +80,6 @@ class Trip
     public function __construct()
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->conveyances = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->options = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -259,72 +242,6 @@ class Trip
     }
 
     /**
-     * Add conveyances
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances
-     * @return Trip
-     */
-    public function addConveyance(\M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances)
-    {
-        $this->conveyances[] = $conveyances;
-
-        return $this;
-    }
-
-    /**
-     * Remove conveyances
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances
-     */
-    public function removeConveyance(\M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances)
-    {
-        $this->conveyances->removeElement($conveyances);
-    }
-
-    /**
-     * Get conveyances
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getConveyances()
-    {
-        return $this->conveyances;
-    }
-
-    /**
-     * Add options
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripOption $options
-     * @return Trip
-     */
-    public function addOption(\M2TIIL\TripBookerBundle\Entity\TripOption $options)
-    {
-        $this->options[] = $options;
-
-        return $this;
-    }
-
-    /**
-     * Remove options
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripOption $options
-     */
-    public function removeOption(\M2TIIL\TripBookerBundle\Entity\TripOption $options)
-    {
-        $this->options->removeElement($options);
-    }
-
-    /**
-     * Get options
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
-
-    /**
      * Add steps
      *
      * @param \M2TIIL\TripBookerBundle\Entity\TripStep $steps
@@ -355,39 +272,6 @@ class Trip
     public function getSteps()
     {
         return $this->steps;
-    }
-
-    /**
-     * Add conveyancesOptions
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions
-     * @return Trip
-     */
-    public function addConveyancesOption(\M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions)
-    {
-        $this->conveyancesOptions[] = $conveyancesOptions;
-
-        return $this;
-    }
-
-    /**
-     * Remove conveyancesOptions
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions
-     */
-    public function removeConveyancesOption(\M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions)
-    {
-        $this->conveyancesOptions->removeElement($conveyancesOptions);
-    }
-
-    /**
-     * Get conveyancesOptions
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getConveyancesOptions()
-    {
-        return $this->conveyancesOptions;
     }
 
     /**

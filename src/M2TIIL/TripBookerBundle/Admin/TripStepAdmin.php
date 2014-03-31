@@ -22,23 +22,70 @@ class TripStepAdmin extends Admin
                 ),
             ))
             ->add('startCity', 'text', array('label' => 'Ville de départ'))
-            ->add('endCity', 'text', array('label' => "Ville d'arrivée"))
-            ->add('startDate', 'date', array(
-                'label' => 'Date de début',
-                'format' => 'ddMMyyyy',
-                'data' => new \DateTime(),   
-            ))
-            ->add('endDate', 'date', array(
-                'label' => 'Date de fin',
-                'format' => 'ddMMyyyy',
-                'data' => new \DateTime(),         
-            ))
+            ->add('endCity', 'text', array('label' => "Ville d'arrivée"));
+
+        if ($this->id($this->getSubject())) {
+            $formMapper
+                ->add('startDate', 'date', array(
+                    'label' => 'Date de début',
+                    'format' => 'ddMMyyyy',
+                ))
+                ->add('endDate', 'date', array(
+                    'label' => 'Date de fin',
+                    'format' => 'ddMMyyyy',
+                ))
+            ;
+        }
+        else {
+            $formMapper
+                ->add('startDate', 'date', array(
+                    'label' => 'Date de début',
+                    'format' => 'ddMMyyyy',
+                    'data' => new \DateTime(),   
+                ))
+                ->add('endDate', 'date', array(
+                    'label' => 'Date de fin',
+                    'format' => 'ddMMyyyy',
+                    'data' => new \DateTime(),         
+                ))
+            ;
+        }
+
+        $formMapper
             ->add('price', 'number', array(
                 'label' => 'Prix',
             ))
+            ->add('startStep', 'checkbox', array(
+                'label' => 'Première étape du voyage',
+                'required' => false,
+            ))
+            ->add('endStep', 'checkbox', array(
+                'label' => "Dernière étape du voyage",
+                'required' => false,
+            ))
+            ->add('conveyances', 'sonata_type_model', array(
+                'label' => 'Moyens de transports',
+                'class' => 'M2TIILTripBookerBundle:Conveyance',
+                'expanded' => false,
+                'multiple' => true,
+            ))
+            ->add('conveyancesOptions', 'sonata_type_model', array(
+                'label' => 'Options des moyens de transport',
+                'class' => 'M2TIILTripBookerBundle:ConveyanceOption',
+                'expanded' => false,
+                'multiple' => true,
+                'required' => false,
+            ))  
+            ->add('options', 'sonata_type_model', array(
+                'label' => 'Options du voyage',
+                'class' => 'M2TIILTripBookerBundle:TripOption',
+                'expanded' => false,
+                'multiple' => true,
+                'required' => false,
+            ))
             ->add('image', 'sonata_type_admin', array(
                 'label' => 'Image',
-                'required' => false,
+                //'required' => false,
             ), array('edit' => 'inline'))
         ;
     }

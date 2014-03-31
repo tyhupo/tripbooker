@@ -26,7 +26,7 @@ class TripOptionAdmin extends Admin
             ))
             ->add('images', 'sonata_type_admin', array(
                 'label' => 'Image',
-                'required' => false,
+                //'required' => false,
             ), array('edit' => 'inline'))
         ;
     }
@@ -45,5 +45,14 @@ class TripOptionAdmin extends Admin
         $listMapper
             ->addIdentifier('title')
         ;
+    }
+
+    public function prePersist($object)
+    {
+        foreach ($object->getImages() as $image) {
+            if ($image->getUri() == null) {
+                $object->removeImage($image);
+            }
+        }
     }
 }

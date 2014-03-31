@@ -2,7 +2,7 @@ services:
     sonata.admin.category:
         class: M2TIIL\TripBookerBundle\Admin\TripCategoryAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Catégories de voyage", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Catégories de voyage", show_in_dashboard: true }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripCategory
@@ -24,7 +24,7 @@ services:
     sonata.admin.tripImage:
         class: M2TIIL\TripBookerBundle\Admin\TripImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des voyage", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des voyage", show_in_dashboard: true }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripImage
@@ -35,7 +35,7 @@ services:
     sonata.admin.tripOption:
         class: M2TIIL\TripBookerBundle\Admin\TripOptionAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Options de voyage", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Options de voyage", show_in_dashboard: true }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripOption
@@ -46,7 +46,7 @@ services:
     sonata.admin.tripStep:
         class: M2TIIL\TripBookerBundle\Admin\TripStepAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Etape de voyage", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Etape de voyage", show_in_dashboard: true }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripStep
@@ -57,7 +57,7 @@ services:
     sonata.admin.tripOptionImage:
         class: M2TIIL\TripBookerBundle\Admin\TripOptionImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des options de voyage", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des options de voyage", show_in_dashboard: true }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripOptionImage
@@ -68,7 +68,7 @@ services:
     sonata.admin.conveyance:
         class: M2TIIL\TripBookerBundle\Admin\ConveyanceAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Moyens de transport", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Moyens de transport", show_in_dashboard: true }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\Conveyance
@@ -79,7 +79,7 @@ services:
     sonata.admin.conveyanceOption:
         class: M2TIIL\TripBookerBundle\Admin\ConveyanceOptionAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Options des moyens de transport", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Options des moyens de transport", show_in_dashboard: true }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\ConveyanceOption

@@ -60,35 +60,15 @@ class TripAdmin extends Admin
                 'expanded' => false,
                 'multiple' => true,
             ))
-            ->add('conveyances', 'sonata_type_model', array(
-                'label' => 'Moyens de transports',
-                'class' => 'M2TIILTripBookerBundle:Conveyance',
-                'expanded' => false,
-                'multiple' => true,
-            ))
             ->add('steps', 'sonata_type_model', array(
                 'label' => 'Etapes du voyage',
                 'class' => 'M2TIILTripBookerBundle:TripStep',
                 'expanded' => false,
                 'multiple' => true,
             ))
-            ->add('conveyancesOptions', 'sonata_type_model', array(
-                'label' => 'Options des moyens de transport',
-                'class' => 'M2TIILTripBookerBundle:ConveyanceOption',
-                'expanded' => false,
-                'multiple' => true,
-                'required' => false,
-            ))  
-            ->add('options', 'sonata_type_model', array(
-                'label' => 'Options du voyage',
-                'class' => 'M2TIILTripBookerBundle:TripOption',
-                'expanded' => false,
-                'multiple' => true,
-                'required' => false,
-            ))
             ->add('image', 'sonata_type_admin', array(
                 'label' => 'Image',
-                'required' => false,
+                //'required' => false,
             ), array('edit' => 'inline'))
         ;
     }

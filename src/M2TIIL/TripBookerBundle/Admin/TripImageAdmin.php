@@ -27,8 +27,9 @@ class TripImageAdmin extends Admin
 
         // Show a thumbnail in the help
         $fileFieldOptions = array('required' => false, 'label' => false);
-        if ($image && ($webPath = $image->getWebPath())) {
-            $fileFieldOptions['help'] = '<img src="'.self::WEB_ROOT_DIR_PATH.$webPath.'" class="admin-preview" />';
+        if ($image) {
+            $webpath = $this->getConfigurationPool()->getContainer()->get('templating.helper.assets')->getUrl('uploads/'.$image->getId() . '.' . $image->getUri());
+            $fileFieldOptions['help'] = '<img src="'.$webpath.'" class="admin-preview" style="width: 200px"/>';
         }
 
         $formMapper

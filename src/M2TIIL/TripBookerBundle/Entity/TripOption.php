@@ -163,4 +163,14 @@ class TripOption
     {
         return $this->images;
     }
+
+    /**
+     * Remove image
+     */
+    public function removeImage($image)
+    {
+        $key = array_search($image, $images);
+        if ($key)
+            unset($images[$key]);   
+    }
 }

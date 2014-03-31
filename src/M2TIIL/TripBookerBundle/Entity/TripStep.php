@@ -71,10 +71,39 @@ class TripStep
     private $price;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="startStep", type="boolean")
+     */
+    private $startStep;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="endStep", type="boolean", nullable=true)
+     */
+    private $endStep;
+
+    /**
      * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
      * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
     protected $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="TripOption") 
+     */
+    protected $options;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Conveyance") 
+     */
+    protected $conveyances;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ConveyanceOption") 
+     */
+    private $conveyancesOptions;
 
 
     /**
@@ -284,5 +313,150 @@ class TripStep
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add options
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripOption $options
+     * @return TripStep
+     */
+    public function addOption(\M2TIIL\TripBookerBundle\Entity\TripOption $options)
+    {
+        $this->options[] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Remove options
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripOption $options
+     */
+    public function removeOption(\M2TIIL\TripBookerBundle\Entity\TripOption $options)
+    {
+        $this->options->removeElement($options);
+    }
+
+    /**
+     * Get options
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Add conveyances
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances
+     * @return TripStep
+     */
+    public function addConveyance(\M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances)
+    {
+        $this->conveyances[] = $conveyances;
+
+        return $this;
+    }
+
+    /**
+     * Remove conveyances
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances
+     */
+    public function removeConveyance(\M2TIIL\TripBookerBundle\Entity\Conveyance $conveyances)
+    {
+        $this->conveyances->removeElement($conveyances);
+    }
+
+    /**
+     * Get conveyances
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getConveyances()
+    {
+        return $this->conveyances;
+    }
+
+    /**
+     * Add conveyancesOptions
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions
+     * @return TripStep
+     */
+    public function addConveyancesOption(\M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions)
+    {
+        $this->conveyancesOptions[] = $conveyancesOptions;
+
+        return $this;
+    }
+
+    /**
+     * Remove conveyancesOptions
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions
+     */
+    public function removeConveyancesOption(\M2TIIL\TripBookerBundle\Entity\ConveyanceOption $conveyancesOptions)
+    {
+        $this->conveyancesOptions->removeElement($conveyancesOptions);
+    }
+
+    /**
+     * Get conveyancesOptions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getConveyancesOptions()
+    {
+        return $this->conveyancesOptions;
+    }
+
+    /**
+     * Set startStep
+     *
+     * @param boolean $startStep
+     * @return TripStep
+     */
+    public function setStartStep($startStep)
+    {
+        $this->startStep = $startStep;
+
+        return $this;
+    }
+
+    /**
+     * Get startStep
+     *
+     * @return boolean 
+     */
+    public function getStartStep()
+    {
+        return $this->startStep;
+    }
+
+    /**
+     * Set endStep
+     *
+     * @param boolean $endStep
+     * @return TripStep
+     */
+    public function setEndStep($endStep)
+    {
+        $this->endStep = $endStep;
+
+        return $this;
+    }
+
+    /**
+     * Get endStep
+     *
+     * @return boolean 
+     */
+    public function getEndStep()
+    {
+        return $this->endStep;
     }
 }
