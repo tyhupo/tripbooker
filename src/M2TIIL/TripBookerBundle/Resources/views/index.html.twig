@@ -56,8 +56,9 @@
 					<li> 
 						<img src="assets/img/fairbank.png" />
 						<div class="slider-travel-promo-infos">
-							<span class="titre">{{ pack.titre }}</span>
-							<span class="date">{{ pack.date }}</span>
+							<span class="titre">{{ pack.title }}</span>
+							Du <span class="startDate">{{ pack.startDate|date('d/m/Y') }}</span>
+							 au <span class="endDate">{{ pack.endDate|date('d/m/Y') }}</span>
 						</div>
 						<span class="slider-travel-promo-price">{{ pack.price }}</span>
 					</li>

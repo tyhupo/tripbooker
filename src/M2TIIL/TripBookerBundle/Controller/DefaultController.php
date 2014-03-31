@@ -5,6 +5,10 @@ namespace M2TIIL\TripBookerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+use M2TIIL\TripBookerBundle\Entity\Trip;
+use M2TIIL\TripBookerBundle\Entity\Hotel;
+use M2TIIL\TripBookerBundle\Entity\GuidedTour;
+
 class DefaultController extends Controller
 {
 	/**
@@ -12,19 +16,31 @@ class DefaultController extends Controller
 	 */
     public function indexAction()
     {
+		$em = $this->getDoctrine()->getManager();
+		$packs = $em->getRepository('M2TIILTripBookerBundle:Trip')->findAll();
+		
         return $this->render('M2TIILTripBookerBundle::index.html.twig', array(
-        	'packs' => array(),
+        	'packs' => $packs,
         	'form_custom_cities' => array(), 
         ));
     }
-
+	
     /**
      * @Route("/hotels/", name="tripbooker_hotels_list")
      */
     public function hotelAction()
     {
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('M2TIILTripBookerBundle:Hotel');
+		$hotels = $repository->findAll();
+		
+		if($hotels == NULL)
+		{
+			throw $this->createNotFoundException('Aucun pack trouvé');
+		}
+		
     	return $this->render('M2TIILTripBookerBundle:Hotels:hotels.html.twig',array(
-    		'hotels' => array(),
+    		'hotels' => array(hotels),
 		));
     }
 
@@ -33,8 +49,22 @@ class DefaultController extends Controller
      */
     public function excursionAction()
     {
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('M2TIILTripBookerBundle:GuidedTour');
+		$excursions = $repository->findAll();
+		
+		if($excursions == NULL)
+		{
+			throw $this->createNotFoundException('Aucune excursion trouvé');
+		}
+		
     	return $this->render('M2TIILTripBookerBundle:Excursions:excursions.html.twig',array(
-    		'excursions' => array(),
+    		'excursions' => array(excursions),
 		));
     }
+	
+	public function connexionAction($login, $password)
+	{
+		
+	}
 }
