@@ -16,6 +16,7 @@ class DefaultController extends Controller
 	 */
     public function indexAction()
     {
+		$packs = array();
 		$em = $this->getDoctrine()->getManager();
 		$packs = $em->getRepository('M2TIILTripBookerBundle:Trip')->findAll();
 		
