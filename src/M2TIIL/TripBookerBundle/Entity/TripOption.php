@@ -43,16 +43,18 @@ class TripOption
     private $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="options", cascade={"remove"})
-     * @ORM\JoinColumn(name="trip_option_id", referencedColumnName="id") 
-     */
-    protected $trip;
-
-    /**
-     * @ORM\OneToMany(targetEntity="TripOptionImage", mappedBy="tripOption", cascade={"remove","persist"}) 
+     * @ORM\OneToOne(targetEntity="TripOptionImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
     protected $images;
 
+
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
 
     /**
      * Get id
@@ -131,5 +133,34 @@ class TripOption
     public function getPrice()
     {
         return $this->price;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * Set images
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripOptionImage $images
+     * @return TripOption
+     */
+    public function setImages(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $images = null)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Get images
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\TripOptionImage 
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

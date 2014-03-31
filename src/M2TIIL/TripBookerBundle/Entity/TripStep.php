@@ -52,14 +52,14 @@ class TripStep
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="time")
+     * @ORM\Column(name="startDate", type="datetime")
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="time")
+     * @ORM\Column(name="endDate", type="datetime")
      */
     private $endDate;
 
@@ -71,9 +71,18 @@ class TripStep
     private $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="TripImage", mappedBy="tripStep", cascade={"remove","persist"}) 
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
-    protected $images;
+    protected $image;
+
+
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
 
 
     /**
@@ -245,5 +254,35 @@ class TripStep
     public function getPrice()
     {
         return $this->price;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set image
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $image
+     * @return TripStep
+     */
+    public function setImage(\M2TIIL\TripBookerBundle\Entity\TripImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\TripImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

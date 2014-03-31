@@ -30,6 +30,14 @@ class TripCategory
 
 
     /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
+
+
+    /**
      * Get id
      *
      * @return integer 

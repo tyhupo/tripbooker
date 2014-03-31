@@ -70,6 +70,20 @@ class TripStep
      */
     private $price;
 
+    /**
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
+     */
+    protected $image;
+
+
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
+
 
     /**
      * Get id
@@ -240,5 +254,35 @@ class TripStep
     public function getPrice()
     {
         return $this->price;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set image
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $image
+     * @return TripStep
+     */
+    public function setImage(\M2TIIL\TripBookerBundle\Entity\TripImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\TripImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

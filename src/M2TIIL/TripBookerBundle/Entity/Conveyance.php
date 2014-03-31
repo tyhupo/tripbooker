@@ -28,16 +28,14 @@ class Conveyance
      */
     private $title;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="conveyances", cascade={"remove"})
-     * @ORM\JoinColumn(name="conveyance_id", referencedColumnName="id") 
-     */
-    protected $trip;
+    
 
     /**
-     * @ORM\OneToMany(targetEntity="ConveyanceOption", mappedBy="conveyance", cascade={"remove","persist"}) 
+     * To string
      */
-    protected $conveyancesOptions;
+    public function __toString() {
+        return $this->title;
+    }
 
 
     /**
@@ -71,5 +69,12 @@ class Conveyance
     public function getTitle()
     {
         return $this->title;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->conveyancesOptions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }

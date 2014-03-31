@@ -42,11 +42,13 @@ class ConveyanceOption
      */
     private $price;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="Conveyance", inversedBy="conveyanceOptions", cascade={"remove"})
-     * @ORM\JoinColumn(name="conveyance_option_id", referencedColumnName="id") 
+     * To string
      */
-    protected $conveyance;
+    public function __toString() {
+        return $this->title;
+    }
 
 
     /**
