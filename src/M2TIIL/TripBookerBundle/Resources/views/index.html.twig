@@ -8,12 +8,18 @@
 				<h2>Personnalisez votre voyage</h2>
 				<form id="package-form-1">
 					<div class="form-select-travel">
-						<input type="text" name="start-place" value="Départ" />
-							<div class="block-select-start-place" style="display:none;"></div>
-						<input type="text" name="start-date" value=" Départ" />
-						<input type="text" name="end-place" value="Destination" />
-							<div class="block-select-end-place" style="display:none;"></div>
-						<input type="text" name="end-date" value="Arrivée" />
+						<select type="text" name="start-place" value="Départ">
+							<option value="0">Départ</option>
+						</select>
+						<select type="text" name="start-date" value=" Départ">
+							<option value="0">Départ</option>
+						</select>
+						<select type="text" name="end-place" value="Destination">
+							<option value="0">Destination</option>
+						</select>
+						<select type="text" name="end-date" value="Arrivée">
+							<option value="0">Arrivée</option>
+						</select>
 					</div>
 					<div class="form-select-number">
 						<select name="select-number">
@@ -46,30 +52,18 @@
 			<h1>Packs Premium</h1>
 
 			<ul class="slider-travel-promo">
-				<li> 
-					<img src="assets/img/fairbank.png" />
-					<div class="slider-travel-promo-infos">
-						<span class="titre">Paris - Fairbanks</span>
-						<span class="date">Du 5 au 12 Juill. 2014</span>
-					</div>
-					<span class="slider-travel-promo-price">880€</span>
-				</li>
-				<li> 
-					<img src="assets/img/moscou.png" />
-					<div class="slider-travel-promo-infos">
-						<span class="titre">Paris - Fairbanks</span>
-						<span class="date">Du 5 au 12 Juill. 2014</span>
-					</div>
-					<span class="slider-travel-promo-price">880€</span>
-				</li>
-				<li> 
-					<img src="assets/img/tokyo.png" />
-					<div class="slider-travel-promo-infos">
-						<span class="titre">Paris - Fairbanks</span>
-						<span class="date">Du 5 au 12 Juill. 2014</span>
-					</div>
-					<span class="slider-travel-promo-price">880€</span>
-				</li>
+				{% for pack in packs %}
+					<li> 
+						<img src="assets/img/fairbank.png" />
+						<div class="slider-travel-promo-infos">
+							<span class="titre">{{ pack.titre }}</span>
+							<span class="date">{{ pack.date }}</span>
+						</div>
+						<span class="slider-travel-promo-price">{{ pack.price }}</span>
+					</li>
+				{% else %}
+					<li>Pas de Pack trouvé.</li>
+				{% endfor %}
 			</ul>
 		</div>
 	</div>

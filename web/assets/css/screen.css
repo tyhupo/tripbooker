@@ -85,6 +85,14 @@ body .section {
   width: 100%;
 }
 
+html.not-front body {
+  background-color: #2980b9;
+}
+
+#main-content {
+  width: 960px;
+}
+
 #header .header-nav {
   height: 80px;
   width: 100%;
@@ -168,20 +176,20 @@ body .section {
 #section-1 .block-reservation form .form-select-travel {
   margin-bottom: 20px;
 }
-#section-1 .block-reservation form input[type=text] {
+#section-1 .block-reservation form .form-select-travel select {
   width: 190px;
   height: 40px;
   font-size: 21px;
   border: none;
   color: #2980b9;
   margin-bottom: 20px;
-  padding-left: 50px;
+  padding-left: 45px;
   font-weight: bold;
 }
-#section-1 .block-reservation form input[type=text][name=start-date], #section-1 .block-reservation form input[type=text][name=end-date] {
+#section-1 .block-reservation form .form-select-travel select[name=start-date], #section-1 .block-reservation form .form-select-travel select[name=end-date] {
   margin-left: 30px;
 }
-#section-1 .block-reservation form select {
+#section-1 .block-reservation form .form-select-number select {
   width: 215px;
   height: 30px;
   font-size: 21px;

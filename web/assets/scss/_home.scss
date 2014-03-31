@@ -23,34 +23,35 @@
 
 			.form-select-travel{
 				margin-bottom: 20px;
-			}
 
-			input[type=text]{
-				width: 190px;
-				height: 40px;
-				font-size: 21px;
-				border: none;
-				color: $blue;
-				margin-bottom: 20px;
-				padding-left: 50px;
-				font-weight: bold;
+				select{
+					width: 190px;
+					height: 40px;
+					font-size: 21px;
+					border: none;
+					color: $blue;
+					margin-bottom: 20px;
+					padding-left: 45px;
+					font-weight: bold;
 
-				&[name=start-date],
-				&[name=end-date]{
-					margin-left: 30px;
+					&[name=start-date],
+					&[name=end-date]{
+						margin-left: 30px;
+					}
 				}
 			}
-
-			select{
-				width: 215px;
-				height: 30px;
-				font-size: 21px;
-				font-weight: bold;
-				line-height: 30px;
-				padding-left: 10px;
-				color: $blue;
+			.form-select-number{
+				select{
+					width: 215px;
+					height: 30px;
+					font-size: 21px;
+					font-weight: bold;
+					line-height: 30px;
+					padding-left: 10px;
+					color: $blue;
+				}
 			}
-
+			
 			input[type=submit]{
 				width: 145px;
 				height: 40px;

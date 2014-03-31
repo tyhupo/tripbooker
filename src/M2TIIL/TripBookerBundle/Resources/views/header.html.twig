@@ -2,17 +2,17 @@
 <header id="header">
 	<div class="header-nav">
 		<div class="wrapper">
-			<div class="logo"><img src="assets/img/logo.png" /></div>
+			<div class="logo"><a href="{{ path('tripBooker_home') }}"><img src="{{ asset('assets/img/logo.png') }}" /></a></div>
 			<ul class="header-menu">
 				<li><a href="#">Voyages</a></li>
-				<li><a href="#">Hôtels</a></li>
-				<li><a href="#">Excursions</a></li>
+				<li><a href="{{ path('tripbooker_hotels_list') }}">Hôtels</a></li>
+				<li><a href="{{ path('tripbooker_excursions_list') }}">Excursions</a></li>
 				<li class="cart"></li>
 				<li class="user"></li>
 			</ul>
 		</div>
 	</div>
 	<div class="slider">
-		<img src="assets/img/slide3.png" />
+		<img src="{{ asset('assets/img/slide3.png') }}" />
 	</div>
 </header>
