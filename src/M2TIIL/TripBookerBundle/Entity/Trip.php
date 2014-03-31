@@ -31,14 +31,14 @@ class Trip
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="time")
+     * @ORM\Column(name="startDate", type="datetime")
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="time")
+     * @ORM\Column(name="endDate", type="datetime")
      */
     private $endDate;
 
@@ -77,12 +77,13 @@ class Trip
     protected $options;
 
     /**
-     * @ORM\OneToMany(targetEntity="TripImage", mappedBy="trip", cascade={"remove","persist"}) 
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
-    protected $images;
+    protected $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="TripStep", mappedBy="trip", cascade={"remove","persist"}) 
+     * @ORM\ManyToMany(targetEntity="TripStep") 
      */
     protected $steps;
 
@@ -96,7 +97,6 @@ class Trip
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->conveyances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->options = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -325,39 +325,6 @@ class Trip
     }
 
     /**
-     * Add images
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $images
-     * @return Trip
-     */
-    public function addImage(\M2TIIL\TripBookerBundle\Entity\TripImage $images)
-    {
-        $this->images[] = $images;
-
-        return $this;
-    }
-
-    /**
-     * Remove images
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $images
-     */
-    public function removeImage(\M2TIIL\TripBookerBundle\Entity\TripImage $images)
-    {
-        $this->images->removeElement($images);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
      * Add steps
      *
      * @param \M2TIIL\TripBookerBundle\Entity\TripStep $steps
@@ -421,5 +388,51 @@ class Trip
     public function getConveyancesOptions()
     {
         return $this->conveyancesOptions;
+    }
+
+    /**
+     * Set images
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $images
+     * @return Trip
+     */
+    public function setImages(\M2TIIL\TripBookerBundle\Entity\TripImage $images = null)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Get images
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\TripImage 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $image
+     * @return Trip
+     */
+    public function setImage(\M2TIIL\TripBookerBundle\Entity\TripImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\TripImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

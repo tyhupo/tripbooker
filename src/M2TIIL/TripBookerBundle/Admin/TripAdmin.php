@@ -13,17 +13,37 @@ class TripAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text', array('label' => 'Titre'))
-            ->add('startDate', 'date', array(
-                'label' => 'Date de début',
-                'format' => 'ddMMyyyy',
-                'data' => new \DateTime(),   
-            ))
-            ->add('endDate', 'date', array(
-                'label' => 'Date de fin',
-                'format' => 'ddMMyyyy',
-                'data' => new \DateTime(),         
-            ))
+            ->add('title', 'text', array('label' => 'Titre'));
+
+        if ($this->id($this->getSubject())) {
+            $formMapper
+                ->add('startDate', 'date', array(
+                    'label' => 'Date de début',
+                    'format' => 'ddMMyyyy',
+                ))
+                ->add('endDate', 'date', array(
+                    'label' => 'Date de fin',
+                    'format' => 'ddMMyyyy',
+                ))
+            ;
+        }
+        else {
+            $formMapper
+                ->add('startDate', 'date', array(
+                    'label' => 'Date de début',
+                    'format' => 'ddMMyyyy',
+                    'data' => new \DateTime(),   
+                ))
+                ->add('endDate', 'date', array(
+                    'label' => 'Date de fin',
+                    'format' => 'ddMMyyyy',
+                    'data' => new \DateTime(),         
+                ))
+            ;
+        }
+
+
+        $formMapper
             ->add('text', 'textarea', array(
                 'label' => 'Texte', 
                 'attr' => array(
@@ -46,26 +66,30 @@ class TripAdmin extends Admin
                 'expanded' => false,
                 'multiple' => true,
             ))
+            ->add('steps', 'sonata_type_model', array(
+                'label' => 'Etapes du voyage',
+                'class' => 'M2TIILTripBookerBundle:TripStep',
+                'expanded' => false,
+                'multiple' => true,
+            ))
             ->add('conveyancesOptions', 'sonata_type_model', array(
                 'label' => 'Options des moyens de transport',
                 'class' => 'M2TIILTripBookerBundle:ConveyanceOption',
                 'expanded' => false,
                 'multiple' => true,
+                'required' => false,
             ))  
             ->add('options', 'sonata_type_model', array(
                 'label' => 'Options du voyage',
                 'class' => 'M2TIILTripBookerBundle:TripOption',
                 'expanded' => false,
                 'multiple' => true,
+                'required' => false,
             ))
-            ->add('images', 'sonata_type_collection', array(
-                    'by_reference' => false,
-                ),
-                array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                )
-            )
+            ->add('image', 'sonata_type_admin', array(
+                'label' => 'Image',
+                'required' => false,
+            ), array('edit' => 'inline'))
         ;
     }
 

@@ -36,12 +36,6 @@ class TripImage
      */
     private $uri;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="images", cascade={"remove"})
-     * @ORM\JoinColumn(name="trip_image_id", referencedColumnName="id") 
-     */
-    protected $trip;
-
     private $file;
     private $tempFilename;
 
@@ -100,29 +94,6 @@ class TripImage
     public function getUri()
     {
         return $this->uri;
-    }
-
-    /**
-     * Set trip
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\Trip $trip
-     * @return TripImage
-     */
-    public function setTrip(\M2TIIL\TripBookerBundle\Entity\Trip $trip = null)
-    {
-        $this->trip = $trip;
-
-        return $this;
-    }
-
-    /**
-     * Get trip
-     *
-     * @return \M2TIIL\TripBookerBundle\Entity\Trip 
-     */
-    public function getTrip()
-    {
-        return $this->trip;
     }
 
 

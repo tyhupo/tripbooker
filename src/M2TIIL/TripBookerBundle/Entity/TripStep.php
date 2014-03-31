@@ -52,14 +52,14 @@ class TripStep
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="time")
+     * @ORM\Column(name="startDate", type="datetime")
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="time")
+     * @ORM\Column(name="endDate", type="datetime")
      */
     private $endDate;
 
@@ -71,15 +71,18 @@ class TripStep
     private $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="TripImage", mappedBy="tripStep", cascade={"remove","persist"}) 
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
-    protected $images;
+    protected $image;
+
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="steps", cascade={"remove"})
-     * @ORM\JoinColumn(name="trip_step_id", referencedColumnName="id") 
+     * To string
      */
-    protected $trip;
+    public function __toString() {
+        return $this->title;
+    }
 
 
     /**
@@ -261,58 +264,25 @@ class TripStep
     }
 
     /**
-     * Add images
+     * Set image
      *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $images
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $image
      * @return TripStep
      */
-    public function addImage(\M2TIIL\TripBookerBundle\Entity\TripImage $images)
+    public function setImage(\M2TIIL\TripBookerBundle\Entity\TripImage $image = null)
     {
-        $this->images[] = $images;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Remove images
+     * Get image
      *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $images
+     * @return \M2TIIL\TripBookerBundle\Entity\TripImage 
      */
-    public function removeImage(\M2TIIL\TripBookerBundle\Entity\TripImage $images)
+    public function getImage()
     {
-        $this->images->removeElement($images);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * Set trip
-     *
-     * @param \M2TIIL\TripBookerBundle\Entity\Trip $trip
-     * @return TripStep
-     */
-    public function setTrip(\M2TIIL\TripBookerBundle\Entity\Trip $trip = null)
-    {
-        $this->trip = $trip;
-
-        return $this;
-    }
-
-    /**
-     * Get trip
-     *
-     * @return \M2TIIL\TripBookerBundle\Entity\Trip 
-     */
-    public function getTrip()
-    {
-        return $this->trip;
+        return $this->image;
     }
 }

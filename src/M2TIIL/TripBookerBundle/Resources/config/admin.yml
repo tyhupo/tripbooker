@@ -24,7 +24,7 @@ services:
     sonata.admin.tripImage:
         class: M2TIIL\TripBookerBundle\Admin\TripImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des voyage", show_in_dashboard: true }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des voyage", show_in_dashboard: false }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripImage
@@ -39,6 +39,17 @@ services:
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripOption
+            - ~
+        calls:
+            - [ setTranslationDomain, [M2TIILTripBookerBundle]]
+
+    sonata.admin.tripStep:
+        class: M2TIIL\TripBookerBundle\Admin\TripStepAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Etape de voyage", show_in_dashboard: false }
+        arguments:
+            - ~
+            - M2TIIL\TripBookerBundle\Entity\TripStep
             - ~
         calls:
             - [ setTranslationDomain, [M2TIILTripBookerBundle]]

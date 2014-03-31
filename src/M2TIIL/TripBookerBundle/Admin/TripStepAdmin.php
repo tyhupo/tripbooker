@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class TripOptionAdmin extends Admin
+class TripStepAdmin extends Admin
 {
 	// Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
@@ -21,10 +21,22 @@ class TripOptionAdmin extends Admin
                     'cols' => 50,
                 ),
             ))
+            ->add('startCity', 'text', array('label' => 'Ville de départ'))
+            ->add('endCity', 'text', array('label' => "Ville d'arrivée"))
+            ->add('startDate', 'date', array(
+                'label' => 'Date de début',
+                'format' => 'ddMMyyyy',
+                'data' => new \DateTime(),   
+            ))
+            ->add('endDate', 'date', array(
+                'label' => 'Date de fin',
+                'format' => 'ddMMyyyy',
+                'data' => new \DateTime(),         
+            ))
             ->add('price', 'number', array(
                 'label' => 'Prix',
             ))
-            ->add('images', 'sonata_type_admin', array(
+            ->add('image', 'sonata_type_admin', array(
                 'label' => 'Image',
                 'required' => false,
             ), array('edit' => 'inline'))
