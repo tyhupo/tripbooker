@@ -13,13 +13,7 @@ class ConveyanceAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('title', 'text', array('label' => 'Titre'))
-            ->add('conveyancesOptions', 'sonata_type_model', array(
-                'label' => 'Options',
-                'class' => 'M2TIILTripBookerBundle:ConveyanceOption',
-                'expanded' => false,
-                'multiple' => true,
-            ))            
+            ->add('title', 'text', array('label' => 'Titre'))         
         ;
 
         //die(count($object->getConveyancesOptions()));
@@ -39,28 +33,5 @@ class ConveyanceAdmin extends Admin
         $listMapper
             ->addIdentifier('title')
         ;
-    }
-
-    public function prePersist($object)
-    {
-        $this->preUpdate($project);
-    }
-
-    public function preUpdate($object)
-    {
-        $newConveyanceOptions = $object->getConveyancesOptions();
-
-        // On met à jour la référence vers le moyen de transport en cours d'édition dans les options sélectionnées
-        foreach ($newConveyanceOptions as $option) {
-            $option->setConveyance($object);
-        }
-
-        // Les options liées à ce moyen de transport qui ne le sont plus doivent être supprimées
-        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-        $conveyanceOptions = $em->getRepository('M2TIILTripBookerBundle:ConveyanceOption')->findAll();
-        foreach ($conveyanceOptions as $option) {
-            if ($option->getConveyance() == $object && !in_array($option, $newConveyanceOptions))
-                $option->setConveyance(null);
-        }
     }
 }

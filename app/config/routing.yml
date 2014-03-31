@@ -3,7 +3,8 @@ m2_tiil_user:
     prefix:   /
 
 m2_tiil_trip_booker:
-    resource: "@M2TIILTripBookerBundle/Resources/config/routing.yml"
+    resource: "@M2TIILTripBookerBundle/Controller/"
+    type: annotation
     prefix:   /
 
 admin:

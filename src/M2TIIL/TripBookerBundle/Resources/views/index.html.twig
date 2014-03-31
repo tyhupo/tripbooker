@@ -1,0 +1,76 @@
+{% extends "M2TIILTripBookerBundle::layout.html.twig" %}
+
+{% block content %}
+<div id="section-1" class="section">
+		<div class="wrapper">
+
+			<div class="block-reservation">
+				<h2>Personnalisez votre voyage</h2>
+				<form id="package-form-1">
+					<div class="form-select-travel">
+						<input type="text" name="start-place" value="Départ" />
+							<div class="block-select-start-place" style="display:none;"></div>
+						<input type="text" name="start-date" value=" Départ" />
+						<input type="text" name="end-place" value="Destination" />
+							<div class="block-select-end-place" style="display:none;"></div>
+						<input type="text" name="end-date" value="Arrivée" />
+					</div>
+					<div class="form-select-number">
+						<select name="select-number">
+							<option value="1">1 personne</option>
+							<option value="2">2 personne</option>
+							<option value="3">3 personne</option>
+							<option value="4">4 personne</option>
+							<option value="5">5 personne</option>
+							<option value="6">6 personne</option>
+							<option value="7">7 personne</option>
+							<option value="8">8 personne</option>
+							<option value="9">9 personne</option>
+							<option value="10">10 personne</option>
+						</select>
+					</div>
+					<input type="submit" value="Personnaliser" />
+				</form>
+			</div>
+
+			<div class="home-text">
+				<h1>Simple et Rapide</h1>
+				<p>Tripbooker vous permet de planifier et de réserver vos voyages en seulement quelques clics.</p>
+				<h1>Personnalisable</h1>
+				<p>Avec Tripbooker, trouver les vacances de vos rêves sans contraintes, Choisissez votre Hôtel et vos Excursions pour toutes les périodes de l’année.</p>
+			</div>
+		</div>
+	</div>
+	<div id="section-2" class="section">
+		<div class="wrapper">
+			<h1>Packs Premium</h1>
+
+			<ul class="slider-travel-promo">
+				<li> 
+					<img src="assets/img/fairbank.png" />
+					<div class="slider-travel-promo-infos">
+						<span class="titre">Paris - Fairbanks</span>
+						<span class="date">Du 5 au 12 Juill. 2014</span>
+					</div>
+					<span class="slider-travel-promo-price">880€</span>
+				</li>
+				<li> 
+					<img src="assets/img/moscou.png" />
+					<div class="slider-travel-promo-infos">
+						<span class="titre">Paris - Fairbanks</span>
+						<span class="date">Du 5 au 12 Juill. 2014</span>
+					</div>
+					<span class="slider-travel-promo-price">880€</span>
+				</li>
+				<li> 
+					<img src="assets/img/tokyo.png" />
+					<div class="slider-travel-promo-infos">
+						<span class="titre">Paris - Fairbanks</span>
+						<span class="date">Du 5 au 12 Juill. 2014</span>
+					</div>
+					<span class="slider-travel-promo-price">880€</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+#header{
+	.header-nav{
+		height: 80px;
+		width: 100%;
+		background-color: $blue;
+		font-family: "segoe";
+		font-size: 34px;
+		color: white;
+		border-bottom: solid white 10px;
+
+		.logo{
+			position: relative;
+			z-index: 2;
+			display: inline-block;
+			vertical-align: top;
+			width: 165px;
+			height: 145px;
+			padding-left: 5px;
+			padding-top: 10px;
+		}
+
+		.header-menu{
+
+			margin-left:  20px;
+			width: 760px;
+			height: 80px;
+			display: inline-block;
+			vertical-align: top;
+			li{
+				text-align: center;
+				display: inline-block;
+				vertical-align: top;
+				width: 190px;
+				height: 80px;
+				line-height: 80px;
+
+				a{
+					display: block;
+					text-decoration: none;
+					color: white;
+				}
+
+				&.cart,
+				&.user{
+					width: 50px;
+					cursor: pointer;
+				}
+
+				&.cart:before{
+					font-family: "tripicto";
+					content: "\e603";
+				}
+
+				&.user:before{
+					font-family: "tripicto";
+					content: "\e600";
+				}
+			}
+		}
+	}
+
+	.slider{
+		height: 500px;
+		overflow: hidden;
+		width: 100%;
+		background-color: $blue;
+	}
+}

@@ -17,10 +17,12 @@ class TripAdmin extends Admin
             ->add('startDate', 'date', array(
                 'label' => 'Date de début',
                 'format' => 'ddMMyyyy',
+                'data' => new \DateTime(),   
             ))
             ->add('endDate', 'date', array(
                 'label' => 'Date de fin',
-                'format' => 'ddMMyyyy',                
+                'format' => 'ddMMyyyy',
+                'data' => new \DateTime(),         
             ))
             ->add('text', 'textarea', array(
                 'label' => 'Texte', 
@@ -44,6 +46,26 @@ class TripAdmin extends Admin
                 'expanded' => false,
                 'multiple' => true,
             ))
+            ->add('conveyancesOptions', 'sonata_type_model', array(
+                'label' => 'Options des moyens de transport',
+                'class' => 'M2TIILTripBookerBundle:ConveyanceOption',
+                'expanded' => false,
+                'multiple' => true,
+            ))  
+            ->add('options', 'sonata_type_model', array(
+                'label' => 'Options du voyage',
+                'class' => 'M2TIILTripBookerBundle:TripOption',
+                'expanded' => false,
+                'multiple' => true,
+            ))
+            ->add('images', 'sonata_type_collection', array(
+                    'by_reference' => false,
+                ),
+                array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                )
+            )
         ;
     }
 
