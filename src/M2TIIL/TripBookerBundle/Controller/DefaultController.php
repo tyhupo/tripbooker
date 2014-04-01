@@ -41,12 +41,12 @@ class DefaultController extends Controller
      */
     public function hotelAction()
     {
-		$em = $this->getDoctrine()->getManager();
+		/*$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('M2TIILTripBookerBundle:Hotel');
 		$hotels = $repository->findAll();
-		
+		*/
     	return $this->render('M2TIILTripBookerBundle:Hotels:hotels.html.twig',array(
-    		'hotels' => array(hotels),
+    		'hotels' => array(),
 		));
     }
 
