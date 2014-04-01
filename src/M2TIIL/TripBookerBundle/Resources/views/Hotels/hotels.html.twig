@@ -11,5 +11,27 @@
 	Proin id nulla lorem. Etiam faucibus sagittis dignissim. Praesent gravida lorem non lorem fermentum condimentum. Proin congue lacus id massa elementum, lobortis sodales velit tincidunt. Praesent luctus molestie leo, eu aliquet lorem accumsan a. Nam sed eros non mi consequat faucibus. Vestibulum consequat quis tellus nec fermentum. Nunc libero orci, vulputate a urna eu, eleifend interdum augue. Duis consequat odio eu magna consequat aliquam. Integer at risus sed mi volutpat tincidunt.
 {% endblock %}
 {% block content %}
-Page hotels
+	<div class="list list-hotel">
+		{% for hotel in hotels %}
+			<div class="hotel-item">
+				<div class="hotel-item-image">
+					<img src="{{ asset('uploads/' ~ hotel.image.getId ~ '.' ~ hotel.image.getUri) }}" />
+				</div>
+				<div class="hotel-item-info">
+					<div class="hotel-item-title">
+						{{ hotel.title }}
+					</div>
+					<div class="hotel-item-city">
+						{{ hotel.city }}
+					</div>
+					<div class="hotel-item-description">
+
+					</div>
+					<a href="/hotels/{{ hotel.id }}">Voir l'hôtel</a>
+				</div>
+			</div>
+		{% else %}
+			<p> Il n'existe aucun hotel pour le moment </p>
+		{% endfor %}
+	</div>
 {% endblock %}
