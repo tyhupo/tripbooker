@@ -19,10 +19,20 @@ class DefaultController extends Controller
 		$packs = array();
 		$em = $this->getDoctrine()->getManager();
 		$packs = $em->getRepository('M2TIILTripBookerBundle:Trip')->findAll();
+
+		$packs_trip = array(); 
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
 		
         return $this->render('M2TIILTripBookerBundle::index.html.twig', array(
         	'packs' => $packs,
-        	'form_custom_cities' => array(), 
+        	'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity, 
         ));
     }
 	

@@ -252,34 +252,31 @@ html.not-front body {
   color: #ecf0f1;
   margin-bottom: 25px;
 }
-#section-2 li {
+#section-2 .slider-travel-promo .item {
   width: 250px;
   margin-right: 70px;
   display: inline-block;
   vertical-align: top;
   font-family: "segoe";
 }
-#section-2 li:nth-child(3) {
+#section-2 .slider-travel-promo .item:nth-child(3) {
   margin-right: 0;
 }
-#section-2 li .slider-travel-promo-infos {
+#section-2 .slider-travel-promo .item .slider-travel-promo-infos {
   height: 55px;
   background-color: #2980b9;
   padding-left: 20px;
   padding-top: 10px;
+  color: #ecf0f1;
 }
-#section-2 li .slider-travel-promo-infos .titre {
+#section-2 .slider-travel-promo .item .slider-travel-promo-infos .titre {
   font-size: 24px;
   line-height: 26px;
+  margin-bottom: 5px;
   display: block;
   color: #ecf0f1;
 }
-#section-2 li .slider-travel-promo-infos .date {
-  font-size: 18px;
-  margin-top: 10px;
-  color: #ecf0f1;
-}
-#section-2 li .slider-travel-promo-price {
+#section-2 .slider-travel-promo .item .slider-travel-promo-price {
   height: 30px;
   display: block;
   background-color: #ecf0f1;
