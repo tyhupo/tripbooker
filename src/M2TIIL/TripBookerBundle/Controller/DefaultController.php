@@ -57,7 +57,7 @@ class DefaultController extends Controller
     	return $this->render('M2TIILTripBookerBundle:Hotels:hotels.html.twig',array(
     		'hotels' => $hotels,
     		'form_custom_Startcities' => $tab_trip_startCity,
-        	'form_custom_Endcities' => $tab_trip_endCity, 
+        		'form_custom_Endcities' => $tab_trip_endCity, 
 		));
     }
 
@@ -81,9 +81,9 @@ class DefaultController extends Controller
 		}
 
     	return $this->render('M2TIILTripBookerBundle:Excursions:excursions.html.twig',array(
-    		'excursions' => array($excursions),
+    		'excursions' => $excursions,
     		'form_custom_Startcities' => $tab_trip_startCity,
-        	'form_custom_Endcities' => $tab_trip_endCity,
+        		'form_custom_Endcities' => $tab_trip_endCity,
 		));
     }
 }
