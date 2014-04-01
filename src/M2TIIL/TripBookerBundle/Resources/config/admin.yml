@@ -13,7 +13,7 @@ services:
     sonata.admin.trip:
         class: M2TIIL\TripBookerBundle\Admin\TripAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Voyages" }
+            - { name: sonata.admin, manager_type: orm, group: "Principaux", label: "Voyages" }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\Trip
@@ -24,7 +24,7 @@ services:
     sonata.admin.tripImage:
         class: M2TIIL\TripBookerBundle\Admin\TripImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des voyage", show_in_dashboard: true }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des voyage", show_in_dashboard: false }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripImage
@@ -57,7 +57,7 @@ services:
     sonata.admin.tripOptionImage:
         class: M2TIIL\TripBookerBundle\Admin\TripOptionImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des options de voyage", show_in_dashboard: true }
+            - { name: sonata.admin, manager_type: orm, group: "Administration", label: "Images des options de voyage", show_in_dashboard: false }
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\TripOptionImage
@@ -83,6 +83,28 @@ services:
         arguments:
             - ~
             - M2TIIL\TripBookerBundle\Entity\ConveyanceOption
+            - ~
+        calls:
+            - [ setTranslationDomain, [M2TIILTripBookerBundle]]
+
+    sonata.admin.hotels:
+        class: M2TIIL\TripBookerBundle\Admin\HotelAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Principaux", label: "Hôtels", show_in_dashboard: true }
+        arguments:
+            - ~
+            - M2TIIL\TripBookerBundle\Entity\Hotel
+            - ~
+        calls:
+            - [ setTranslationDomain, [M2TIILTripBookerBundle]]
+
+    sonata.admin.excursions:
+        class: M2TIIL\TripBookerBundle\Admin\ExcursionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Principaux", label: "Excursions", show_in_dashboard: true }
+        arguments:
+            - ~
+            - M2TIIL\TripBookerBundle\Entity\GuidedTour
             - ~
         calls:
             - [ setTranslationDomain, [M2TIILTripBookerBundle]]

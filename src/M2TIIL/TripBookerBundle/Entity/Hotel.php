@@ -22,6 +22,13 @@ class Hotel
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="stars", type="integer")
@@ -36,19 +43,18 @@ class Hotel
     private $capacity;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="latitude", type="float")
+     * @ORM\Column(name="city", type="string", length=255)
      */
-    private $latitude;
+    private $city;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="longitude", type="float")
+     * To string
      */
-    private $longitude;
-
+    public function __toString() {
+        return $this->title;
+    }
 
     /**
      * Get id
@@ -107,48 +113,48 @@ class Hotel
     }
 
     /**
-     * Set latitude
+     * Set city
      *
-     * @param float $latitude
+     * @param string $city
      * @return Hotel
      */
-    public function setLatitude($latitude)
+    public function setCity($city)
     {
-        $this->latitude = $latitude;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get latitude
+     * Get city
      *
-     * @return float 
+     * @return string 
      */
-    public function getLatitude()
+    public function getCity()
     {
-        return $this->latitude;
+        return $this->city;
     }
 
     /**
-     * Set longitude
+     * Set title
      *
-     * @param float $longitude
+     * @param string $title
      * @return Hotel
      */
-    public function setLongitude($longitude)
+    public function setTitle($title)
     {
-        $this->longitude = $longitude;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get longitude
+     * Get title
      *
-     * @return float 
+     * @return string 
      */
-    public function getLongitude()
+    public function getTitle()
     {
-        return $this->longitude;
+        return $this->title;
     }
 }

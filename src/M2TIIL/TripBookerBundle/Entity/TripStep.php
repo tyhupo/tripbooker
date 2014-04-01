@@ -105,6 +105,16 @@ class TripStep
      */
     private $conveyancesOptions;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Hotel") 
+     */
+    private $hotels;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="GuidedTour") 
+     */
+    private $guidedTours;
+
 
     /**
      * To string
@@ -458,5 +468,71 @@ class TripStep
     public function getEndStep()
     {
         return $this->endStep;
+    }
+
+    /**
+     * Add hotels
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\Hotel $hotels
+     * @return TripStep
+     */
+    public function addHotel(\M2TIIL\TripBookerBundle\Entity\Hotel $hotels)
+    {
+        $this->hotels[] = $hotels;
+
+        return $this;
+    }
+
+    /**
+     * Remove hotels
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\Hotel $hotels
+     */
+    public function removeHotel(\M2TIIL\TripBookerBundle\Entity\Hotel $hotels)
+    {
+        $this->hotels->removeElement($hotels);
+    }
+
+    /**
+     * Get hotels
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHotels()
+    {
+        return $this->hotels;
+    }
+
+    /**
+     * Add guidedTours
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\GuidedTour $guidedTours
+     * @return TripStep
+     */
+    public function addGuidedTour(\M2TIIL\TripBookerBundle\Entity\GuidedTour $guidedTours)
+    {
+        $this->guidedTours[] = $guidedTours;
+
+        return $this;
+    }
+
+    /**
+     * Remove guidedTours
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\GuidedTour $guidedTours
+     */
+    public function removeGuidedTour(\M2TIIL\TripBookerBundle\Entity\GuidedTour $guidedTours)
+    {
+        $this->guidedTours->removeElement($guidedTours);
+    }
+
+    /**
+     * Get guidedTours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGuidedTours()
+    {
+        return $this->guidedTours;
     }
 }

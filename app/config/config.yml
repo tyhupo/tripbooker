@@ -86,6 +86,7 @@ sonata_admin:
         blocks:
             - { position: left, type: sonata.admin.block.admin_list }
         groups:
+            Principaux: []
             Administration: []
 
 fos_user:

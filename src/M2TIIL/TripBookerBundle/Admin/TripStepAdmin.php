@@ -83,6 +83,20 @@ class TripStepAdmin extends Admin
                 'multiple' => true,
                 'required' => false,
             ))
+            ->add('hotels', 'sonata_type_model', array(
+                'label' => 'Hôtels',
+                'class' => 'M2TIILTripBookerBundle:Hotel',
+                'expanded' => false,
+                'multiple' => true,
+                'required' => false,
+            ))
+            ->add('guidedTours', 'sonata_type_model', array(
+                'label' => 'Excursions',
+                'class' => 'M2TIILTripBookerBundle:GuidedTour',
+                'expanded' => false,
+                'multiple' => true,
+                'required' => false,
+            ))
             ->add('image', 'sonata_type_admin', array(
                 'label' => 'Image',
                 //'required' => false,
