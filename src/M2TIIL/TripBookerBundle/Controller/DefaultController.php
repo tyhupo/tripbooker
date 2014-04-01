@@ -41,17 +41,12 @@ class DefaultController extends Controller
      */
     public function hotelAction()
     {
-		$em = $this->getDoctrine()->getManager();
+		/*$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('M2TIILTripBookerBundle:Hotel');
 		$hotels = $repository->findAll();
-		
-		if($hotels == NULL)
-		{
-			throw $this->createNotFoundException('Aucun pack trouvé');
-		}
-		
+		*/
     	return $this->render('M2TIILTripBookerBundle:Hotels:hotels.html.twig',array(
-    		'hotels' => array(hotels),
+    		'hotels' => array(),
 		));
     }
 
@@ -64,18 +59,8 @@ class DefaultController extends Controller
 		$repository = $em->getRepository('M2TIILTripBookerBundle:GuidedTour');
 		$excursions = $repository->findAll();
 		
-		if($excursions == NULL)
-		{
-			throw $this->createNotFoundException('Aucune excursion trouvé');
-		}
-		
     	return $this->render('M2TIILTripBookerBundle:Excursions:excursions.html.twig',array(
     		'excursions' => array(excursions),
 		));
     }
-	
-	public function connexionAction($login, $password)
-	{
-		
-	}
 }
