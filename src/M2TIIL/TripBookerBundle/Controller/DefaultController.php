@@ -81,7 +81,29 @@ class DefaultController extends Controller
 		}
 
     	return $this->render('M2TIILTripBookerBundle:Excursions:excursions.html.twig',array(
-    		'excursions' => array($excursions),
+    		'excursions' => $excursions,
+    		'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
+		));
+    }
+
+    /**
+     * @Route("/voyages/", name="tripbooker_voyages_list")
+     */
+    public function voyageAction()
+    {
+    	$voyages = array();
+		$em = $this->getDoctrine()->getManager();
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+
+    	return $this->render('M2TIILTripBookerBundle:Voyages:voyages.html.twig',array(
+    		'voyages' => $voyages,
     		'form_custom_Startcities' => $tab_trip_startCity,
         	'form_custom_Endcities' => $tab_trip_endCity,
 		));

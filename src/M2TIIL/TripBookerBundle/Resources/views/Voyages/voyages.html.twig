@@ -1,0 +1,37 @@
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	Nos Voyages
+{% endblock %}
+{% block description %}
+	Proin id nulla lorem. Etiam faucibus sagittis dignissim. Praesent gravida lorem non lorem fermentum condimentum. Proin congue lacus id massa elementum, lobortis sodales velit tincidunt. Praesent luctus molestie leo, eu aliquet lorem accumsan a. Nam sed eros non mi consequat faucibus. Vestibulum consequat quis tellus nec fermentum. Nunc libero orci, vulputate a urna eu, eleifend interdum augue. Duis consequat odio eu magna consequat aliquam. Integer at risus sed mi volutpat tincidunt.
+{% endblock %}
+{% block content %}
+	<div class="list list-voyage">
+		{% for voyage in voyages %}
+			<div class="voyage-item">
+				<div class="voyage-item-image">
+					<img src="{{ asset('uploads/' ~ voyage.image.getId ~ '.' ~ voyage.image.getUri) }}" />
+				</div>
+				<div class="voyage-item-info">
+					<div class="voyage-item-title">
+						{{ voyage.title }}
+					</div>
+					<div class="voyage-item-city">
+						{{ voyage.city }}
+					</div>
+					<div class="voyage-item-description">
+
+					</div>
+					<a href="/voyages/{{ voyage.id }}">Voir le voyage</a>
+				</div>
+			</div>
+		{% else %}
+			<p> Il n'existe aucun voyage pour le moment </p>
+		{% endfor %}
+	</div>
+{% endblock %}
