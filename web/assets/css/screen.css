@@ -70,7 +70,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 @font-face {
-  font-family: "tfripicto";
+  font-family: "tripicto";
   src: url('../fonts/../fonts/Tripicto.eot');
   src: url('../fonts/../fonts/Tripicto.eot?#iefix') format('eot'), url('../fonts/../fonts/Tripicto.woff') format('woff'), url('../fonts/../fonts/Tripicto.ttf') format('truetype'), url('../fonts/../fonts/Tripicto.svg') format('svg');
 }
@@ -173,7 +173,14 @@ html.not-front body {
   font-weight: bold;
   font-size: 26px;
   color: white;
+  margin-bottom: 10px;
+}
+#section-1 .block-reservation p {
+  color: white;
+  font-size: 18px;
   margin-bottom: 25px;
+  width: 415px;
+  font-style: italic;
 }
 #section-1 .block-reservation form {
   font-weight: bold;
