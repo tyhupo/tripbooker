@@ -1,0 +1,31 @@
+<div class="block-reservation">
+	<h2>Personnalisez votre voyage</h2>
+	<p>Choisissez les villes étapes de votre voyage pour découvrir les options associées</p>
+	<form id="package-form-1">
+		<div class="form-select-travel">
+			<select type="text" name="start-place" value="Départ">
+				<option value="0">Départ</option>
+				{% for city in form_custom_Startcities %}
+					<option value="{{ city.0 }}">{{ city.0 }}</option>
+				{% else %}
+					<option value="0">Pas de ville de départ</option>
+				{% endfor %}
+			</select>
+			<select type="text" name="start-date" value=" Départ">
+				<option value="0">Départ</option>
+			</select>
+			<select type="text" name="end-place" value="Destination">
+				<option value="0">Destination</option>
+				{% for city in form_custom_Endcities %}
+					<option value="{{ city.0 }}">{{ city.0 }}</option>
+				{% else %}
+					<option value="0">Pas de ville de destination</option>
+				{% endfor %}
+			</select>
+			<select type="text" name="end-date" value="Arrivée">
+				<option value="0">Arrivée</option>
+			</select>
+		</div>
+		<input type="submit" value="Personnaliser" />
+	</form>
+</div>

@@ -41,12 +41,23 @@ class DefaultController extends Controller
      */
     public function hotelAction()
     {
-		/*$em = $this->getDoctrine()->getManager();
-		$repository = $em->getRepository('M2TIILTripBookerBundle:Hotel');
+		$em = $this->getDoctrine()->getManager();
+		/*$repository = $em->getRepository('M2TIILTripBookerBundle:Hotel');
 		$hotels = $repository->findAll();
 		*/
+		$packs_trip = array(); 
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+
     	return $this->render('M2TIILTripBookerBundle:Hotels:hotels.html.twig',array(
     		'hotels' => array(),
+    		'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity, 
 		));
     }
 
