@@ -49,6 +49,20 @@ class GuidedTour
      */
     private $text;
 
+    /**
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
+     */
+    protected $image;
+
+
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
+
 
     /**
      * Get id
@@ -127,5 +141,28 @@ class GuidedTour
     public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return GuidedTour
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

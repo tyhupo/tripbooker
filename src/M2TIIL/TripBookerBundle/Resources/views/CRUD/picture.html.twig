@@ -1,3 +1,5 @@
-<td style="width:150px">
-	<img src="{{ asset('uploads/' ~ object.getId ~ '.' ~ object.getUri) }}" title="{{ object.getTitle }}"/>
+<td style="width:150px"> 
+	{% if object is not null %}
+		<img src="{{ asset('uploads/' ~ object.getId ~ '.' ~ object.getUri) }}" title="{{ object.getTitle }}" style="width:150px"/>
+	{% endif %}
 </td>

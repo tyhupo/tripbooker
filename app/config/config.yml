@@ -87,7 +87,7 @@ sonata_admin:
             - { position: left, type: sonata.admin.block.admin_list }
         groups:
             Principaux: []
-            Administration: []
+            Autres: []
 
 fos_user:
     db_driver:     orm                        # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début

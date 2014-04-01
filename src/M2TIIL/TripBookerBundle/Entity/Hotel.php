@@ -50,6 +50,12 @@ class Hotel
     private $city;
 
     /**
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
+     */
+    protected $image;
+
+    /**
      * To string
      */
     public function __toString() {
@@ -156,5 +162,28 @@ class Hotel
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $image
+     * @return Hotel
+     */
+    public function setImage(\M2TIIL\TripBookerBundle\Entity\TripImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\TripImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

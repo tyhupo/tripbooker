@@ -49,6 +49,18 @@ class Hotel
      */
     private $city;
 
+    /**
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
+     */
+    protected $image;
+
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
 
     /**
      * Get id
@@ -127,5 +139,28 @@ class Hotel
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Hotel
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

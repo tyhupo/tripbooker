@@ -1,3 +1,5 @@
 <td>
-	{{ app.request.server.get("SERVER_NAME") }}/uploads/{{object.getId}}.{{object.getUri}}
+	{% if object is not null %}
+		{{ app.request.server.get("SERVER_NAME") }}/uploads/{{object.getId}}.{{object.getUri}}
+	{% endif %}
 </td> 

@@ -46,7 +46,7 @@ class TripOption
      * @ORM\OneToOne(targetEntity="TripOptionImage", cascade={"merge", "remove", "persist"})
      * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
      */
-    protected $images;
+    protected $image;
 
 
     /**
@@ -142,26 +142,26 @@ class TripOption
     }
 
     /**
-     * Set images
+     * Set image
      *
-     * @param \M2TIIL\TripBookerBundle\Entity\TripOptionImage $images
+     * @param \M2TIIL\TripBookerBundle\Entity\TripOptionImage $image
      * @return TripOption
      */
-    public function setImages(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $images = null)
+    public function setImage(\M2TIIL\TripBookerBundle\Entity\TripOptionImage $image = null)
     {
-        $this->images = $images;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get images
+     * Get image
      *
      * @return \M2TIIL\TripBookerBundle\Entity\TripOptionImage 
      */
-    public function getImages()
+    public function getImage()
     {
-        return $this->images;
+        return $this->image;
     }
 
     /**
@@ -169,8 +169,8 @@ class TripOption
      */
     public function removeImage($image)
     {
-        $key = array_search($image, $images);
+        $key = array_search($image, $image);
         if ($key)
-            unset($images[$key]);   
+            unset($image[$key]);   
     }
 }

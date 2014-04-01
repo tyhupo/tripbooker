@@ -49,6 +49,12 @@ class GuidedTour
      */
     private $text;
 
+    /**
+     * @ORM\OneToOne(targetEntity="TripImage", cascade={"merge", "remove", "persist"})
+     * @ORM\JoinColumn(name="tripoptionimage_id", referencedColumnName="id")
+     */
+    protected $image;
+
 
     /**
      * To string
@@ -158,5 +164,28 @@ class GuidedTour
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripImage $image
+     * @return GuidedTour
+     */
+    public function setImage(\M2TIIL\TripBookerBundle\Entity\TripImage $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \M2TIIL\TripBookerBundle\Entity\TripImage 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

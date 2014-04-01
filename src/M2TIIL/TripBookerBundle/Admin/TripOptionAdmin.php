@@ -24,7 +24,7 @@ class TripOptionAdmin extends Admin
             ->add('price', 'number', array(
                 'label' => 'Prix',
             ))
-            ->add('images', 'sonata_type_admin', array(
+            ->add('image', 'sonata_type_admin', array(
                 'label' => 'Image',
                 //'required' => false,
             ), array('edit' => 'inline'))
@@ -43,7 +43,16 @@ class TripOptionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('title')
+            ->add('id', null, array(
+                'label' => 'Image',
+                'template' => 'M2TIILTripBookerBundle:CRUD:trip-picture.html.twig',
+            )) 
+            ->addIdentifier('title', null, array('label' => 'Titre'))
+            ->add('text', null, array('label' => 'Texte'))
+            ->add('price', null, array(
+                'label' => 'Prix',
+                'template' => 'M2TIILTripBookerBundle:CRUD:trip-price.html.twig',
+            ))
         ;
     }
 

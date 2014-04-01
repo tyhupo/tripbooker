@@ -116,7 +116,25 @@ class TripStepAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('title')
+            ->add('id', null, array(
+                'label' => 'Image',
+                'template' => 'M2TIILTripBookerBundle:CRUD:trip-picture.html.twig',
+            )) 
+            ->addIdentifier('title', null, array('label' => 'Titre'))
+            ->add('startCity', 'text', array('label' => 'Ville de départ'))
+            ->add('endCity', 'text', array('label' => "Ville d'arrivée"))
+            ->add('startDate', 'date', array(
+                'label' => 'Date de début',
+                'format' => 'd/m/Y',
+            ))
+            ->add('endDate', 'date', array(
+                'label' => 'Date de fin',
+                'format' => 'd/m/Y',
+            ))
+            ->add('price', null, array(
+                'label' => 'Prix',
+                'template' => 'M2TIILTripBookerBundle:CRUD:trip-price.html.twig',
+            ))
         ;
     }
 }

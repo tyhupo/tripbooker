@@ -17,6 +17,10 @@ class HotelAdmin extends Admin
             ->add('stars', 'integer', array('label' => "Nombre d'étoiles"))
             ->add('capacity', 'integer', array('label' => "Capacité"))
             ->add('city', 'text', array('label' => "Ville"))
+            ->add('image', 'sonata_type_admin', array(
+                'label' => 'Image',
+                //'required' => false,
+            ), array('edit' => 'inline'))
         ;
     }
 
@@ -32,7 +36,14 @@ class HotelAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('title')
+            ->add('id', null, array(
+                'label' => 'Image',
+                'template' => 'M2TIILTripBookerBundle:CRUD:trip-picture.html.twig',
+            )) 
+            ->addIdentifier('title', null, array('label' => 'Titre'))
+            ->add('stars', 'integer', array('label' => "Nombre d'étoiles"))
+            ->add('capacity', 'integer', array('label' => "Capacité"))
+            ->add('city', 'text', array('label' => "Ville"))
         ;
     }
 }

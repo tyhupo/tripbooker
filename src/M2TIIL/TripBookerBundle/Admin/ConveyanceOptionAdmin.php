@@ -39,7 +39,12 @@ class ConveyanceOptionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('title')
+            ->addIdentifier('title', null, array('label' => 'Titre'))
+            ->add('text', null, array('label' => 'Texte'))
+            ->add('price', null, array(
+                'label' => 'Prix',
+                'template' => 'M2TIILTripBookerBundle:CRUD:trip-price.html.twig',
+            ))
         ;
     }
 }

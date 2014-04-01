@@ -23,7 +23,10 @@ class ExcursionAdmin extends Admin
                     'cols' => 50,
                 ),
             ))
-            
+            ->add('image', 'sonata_type_admin', array(
+                'label' => 'Image',
+                //'required' => false,
+            ), array('edit' => 'inline'))
         ;
     }
 
@@ -39,7 +42,14 @@ class ExcursionAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('title')
+            ->add('id', null, array(
+                'label' => 'Image',
+                'template' => 'M2TIILTripBookerBundle:CRUD:trip-picture.html.twig',
+            )) 
+            ->addIdentifier('title', null, array('label' => 'Titre'))
+            ->add('place', 'text', array('label' => 'Endroit'))
+            ->add('duration', 'text', array('label' => 'Durée'))
+            ->add('text', null, array('label' => 'Texte'))
         ;
     }
 }
