@@ -1,5 +1,37 @@
 {% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
 
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	Nos Excursions
+{% endblock %}
+{% block description %}
+	Proin id nulla lorem. Etiam faucibus sagittis dignissim. Praesent gravida lorem non lorem fermentum condimentum. Proin congue lacus id massa elementum, lobortis sodales velit tincidunt. Praesent luctus molestie leo, eu aliquet lorem accumsan a. Nam sed eros non mi consequat faucibus. Vestibulum consequat quis tellus nec fermentum. Nunc libero orci, vulputate a urna eu, eleifend interdum augue. Duis consequat odio eu magna consequat aliquam. Integer at risus sed mi volutpat tincidunt.
+{% endblock %}
 {% block content %}
-Page excursions
+	<div class="list list-excursion">
+		{% for excursion in excursions %}
+			<div class="excursion-item">
+				<div class="excursion-item-image">
+					<img src="{{ asset('uploads/' ~ excursion.image.getId ~ '.' ~ excursion.image.getUri) }}" />
+				</div>
+				<div class="excursion-item-info">
+					<div class="excursion-item-title">
+						{{ excursion.title }}
+					</div>
+					<div class="excursion-item-city">
+						{{ excursion.place }}
+					</div>
+					<div class="excursion-item-description">
+						{{ excursion.text }}
+					</div>
+					<a href="/excursions/{{ excursion.id }}">Voir l'excursion</a>
+				</div>
+			</div>
+		{% else %}
+			<p> Il n'existe aucune excursion pour le moment </p>
+		{% endfor %}
+	</div>
 {% endblock %}
