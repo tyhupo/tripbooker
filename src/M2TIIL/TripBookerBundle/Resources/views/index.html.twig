@@ -11,12 +11,22 @@
 					<div class="form-select-travel">
 						<select type="text" name="start-place" value="Départ">
 							<option value="0">Départ</option>
+							{% for city in form_custom_Startcities %}
+								<option value="{{ city.0 }}">{{ city.0 }}</option>
+							{% else %}
+								<option value="0">Pas de ville de départ</option>
+							{% endfor %}
 						</select>
 						<select type="text" name="start-date" value=" Départ">
 							<option value="0">Départ</option>
 						</select>
 						<select type="text" name="end-place" value="Destination">
 							<option value="0">Destination</option>
+							{% for city in form_custom_Endcities %}
+								<option value="{{ city.0 }}">{{ city.0 }}</option>
+							{% else %}
+								<option value="0">Pas de ville de destination</option>
+							{% endfor %}
 						</select>
 						<select type="text" name="end-date" value="Arrivée">
 							<option value="0">Arrivée</option>
@@ -38,17 +48,17 @@
 		<div class="wrapper">
 			<h1>Packs Premium</h1>
 
-			<ul class="slider-travel-promo">
+			<div id="packs-slider" class="slider-travel-promo">
 				{% for pack in packs %}
-					<li> 
-						<img src="assets/img/fairbank.png" />
+					<div class="item"> 
+						<img src="{{ asset('uploads/' ~ pack.image.getId ~ '.' ~ pack.image.getUri) }}" />
 						<div class="slider-travel-promo-infos">
 							<span class="titre">{{ pack.title }}</span>
 							Du <span class="startDate">{{ pack.startDate|date('d/m/Y') }}</span>
 							 au <span class="endDate">{{ pack.endDate|date('d/m/Y') }}</span>
 						</div>
-						<span class="slider-travel-promo-price">{{ pack.price }}</span>
-					</li>
+						<span class="slider-travel-promo-price">{{ pack.price }} €</span>
+					</div>
 				{% else %}
 					<li>Pas de Pack trouvé.</li>
 				{% endfor %}
