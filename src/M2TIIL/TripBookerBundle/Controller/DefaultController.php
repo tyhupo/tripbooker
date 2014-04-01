@@ -41,10 +41,10 @@ class DefaultController extends Controller
      */
     public function hotelAction()
     {
+    		$hotels = array();
 		$em = $this->getDoctrine()->getManager();
-		/*$repository = $em->getRepository('M2TIILTripBookerBundle:Hotel');
-		$hotels = $repository->findAll();
-		*/
+		$hotels = $em->getRepository('M2TIILTripBookerBundle:Hotel')->findAll();
+		
 		$packs_trip = array(); 
 		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
 		$tab_trip_startCity = array(); 
@@ -55,9 +55,9 @@ class DefaultController extends Controller
 		}
 
     	return $this->render('M2TIILTripBookerBundle:Hotels:hotels.html.twig',array(
-    		'hotels' => array(),
+    		'hotels' => $hotels,
     		'form_custom_Startcities' => $tab_trip_startCity,
-        	'form_custom_Endcities' => $tab_trip_endCity, 
+        		'form_custom_Endcities' => $tab_trip_endCity, 
 		));
     }
 
