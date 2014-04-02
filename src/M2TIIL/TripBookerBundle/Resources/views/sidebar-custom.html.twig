@@ -1,7 +1,7 @@
 <div class="block-reservation">
 	<h2>Personnalisez votre voyage</h2>
 	<p>Choisissez les villes étapes de votre voyage pour découvrir les options associées</p>
-	<form id="package-form-1">
+	<form id="package-form-1" action="{{ path('rechercheEtape') }}" method="POST">
 		<div class="form-select-travel">
 			<select type="text" name="start-place" value="Départ">
 				<option value="0">Départ</option>
