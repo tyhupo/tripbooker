@@ -18,6 +18,12 @@ class User extends BaseUser
 	*/
 	protected $id;
 	
+	/**
+	 * @var \M2TIIL\TripBookerBundle\Entity\BookerOrder
+     * @ORM\ManyToMany(targetEntity="\M2TIIL\TripBookerBundle\Entity\BookerOrder") 
+     */
+    private $bookerOrder;
+	
 
     /**
      * Get id
@@ -27,5 +33,45 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->bookerOrder = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add bookerOrder
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\BookerOrder $bookerOrder
+     * @return User
+     */
+    public function addBookerOrder(\M2TIIL\TripBookerBundle\Entity\BookerOrder $bookerOrder)
+    {
+        $this->bookerOrder[] = $bookerOrder;
+
+        return $this;
+    }
+
+    /**
+     * Remove bookerOrder
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\BookerOrder $bookerOrder
+     */
+    public function removeBookerOrder(\M2TIIL\TripBookerBundle\Entity\BookerOrder $bookerOrder)
+    {
+        $this->bookerOrder->removeElement($bookerOrder);
+    }
+
+    /**
+     * Get bookerOrder
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBookerOrder()
+    {
+        return $this->bookerOrder;
     }
 }
