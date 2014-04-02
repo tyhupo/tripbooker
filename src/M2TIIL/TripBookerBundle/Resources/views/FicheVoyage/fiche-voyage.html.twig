@@ -1,0 +1,58 @@
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	{{ voyage.id }}
+{% endblock %}
+
+{% block description %}
+	{{ voyage.text }}
+{% endblock %}
+
+{% block content %}
+	<div class="main-informations">
+		<div class="main-information-image">
+			<img src="{{ asset('uploads/' ~ voyage.image.getId ~ '.' ~ voyage.image.getUri) }}" />
+		</div>
+		<div class="main-information-content">
+			<span class="start-date"><b>Date de départ :</b>{{ voyage.startDate|date('d/m/Y') }}</span>
+			<span class="end-date"><b>Date d'arrivée :</b>{{ voyage.endDate|date('d/m/Y') }}</span>
+			<div class="categories">
+				<b>Catégories :</b>
+				{% for category in voyage.categories %}
+					<span class="category">{{ category.title }}</span>
+				{% endfor %}
+			</div>
+			<div class="add-to-cart">
+				<span class="price">{{ voyage.price }}</span>
+				<a href="#">Ajouter au panier</a>
+			</div>
+		</div>
+
+	</div>
+	<div class="secondary-informations">
+		<h2>Les étapes associées à ce voyage</h2>
+		{% for step in voyage.steps %}
+			<div class="etape-item list-item">
+				<div class="list-item-image">
+					<img src="{{ asset('uploads/' ~ step.image.getId ~ '.' ~ step.image.getUri) }}" />
+				</div>
+				<div class="list-item-info">
+					<div class="list-item-title">
+						{{ step.title }}
+					</div>
+					<div class="list-item-city">
+						{{ step.startDate|date('d/m/Y') ~ ' - ' ~ step.endDate|date('d/m/Y') }}
+					</div>
+					<div class="list-item-description">
+						{{ step.text }}
+					</div>
+					<a href="{{ path('fiche-etape',{'id':step.id}) }}">Voir l'étape</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
