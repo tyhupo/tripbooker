@@ -5,24 +5,24 @@
 {% endblock %}
 
 {% block titre %}
-	{{ voyage.id }}
+	{{ etape.title }}
 {% endblock %}
 
 {% block description %}
-	{{ voyage.text }}
+	{{ etape.text }}
 {% endblock %}
 
 {% block content %}
 	<div class="main-informations">
 		<div class="main-information-image">
-			<img src="{{ asset('uploads/' ~ voyage.image.getId ~ '.' ~ voyage.image.getUri) }}" />
+			<img src="{{ asset('uploads/' ~ etape.image.getId ~ '.' ~ voyage.image.getUri) }}" />
 		</div>
 		<div class="main-information-content">
-			<span class="start-date">{{ voyage.startDate|date('d/m/Y') }}</span>
-			<span class="end-date">{{ voyage.endDate|date('d/m/Y') }}</span>
-			<span class="category">{{ voyage.category }}</span>
+			<span class="start-date">{{ etape.startDate|date('d/m/Y') }}</span>
+			<span class="end-date">{{ etape.endDate|date('d/m/Y') }}</span>
+			<span class="category">{{ etape.startCity ~ ' -> ' ~ etape.endCity }}</span>
 			<div class="add-to-cart">
-				<span class="price">{{ voyage.price }}</span>
+				<span class="price">{{ etape.price }}</span>
 				<a href="#">Ajouter au panier</a>
 			</div>
 		</div>
@@ -30,8 +30,8 @@
 	</div>
 	<div class="secondary-informations">
 		<h2>Composition de l'étape</h2>
-		{% for step in voyage.steps %}
-			{{ dump(step) }}
+		{% for conveyance in etape.conveyances %}
+			{{ dump(conveyance) }}
 		{% endfor %}
 	</div>
 {% endblock %}
