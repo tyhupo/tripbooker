@@ -10,12 +10,18 @@ use M2TIIL\TripBookerBundle\Entity\TripStep;
 class RechercheController extends Controller
 {
 	/**
-	* @Route("/shearchTripStep/{ville_depart}/{ville_arrive}", defaults={"ville_depart" = null})
+	* @Route("/recherche-etape/{ville_depart}/{ville_arrive}", defaults={"ville_depart" = null, "ville_arrive" = null})
 	*/
-    public function shearchTripStep($ville_depart,$ville_arrive)
+    public function rechercheEtapeAction($ville_depart,$ville_arrive)
     {
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('M2TIILTripBookerBundle:TripStep');
-		$excursions = $repository->findAll();
+		$etapes = $repository->findBy(array('startCity' => $ville_depart, 'endCity' => $ville_arrive),
+										array('price' => 'asc'),
+										null,
+										null);
+		return $this->render('M2TIILTripBookerBundle:Product:recherche-etape.html.twig', array(
+        	'etapes' => $etapes,
+        ));
     }
 }

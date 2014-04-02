@@ -11,21 +11,54 @@ use M2TIIL\TripBookerBundle\Entity\GuidedTour;
 class ProductController extends Controller
 {
 	/**
-	 * @Route("/", name="tripBooker_home")
+	 * @Route("/fiche-voyage", name="fiche-voyage")
 	 */
-	public function productAction($voyage,$id)
+	public function voyageAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
+		$voyage = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
 		
-		if($voyage == true)
-		{
-			$val = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
-		}else{
-			$val = $em->getRepository('M2TIILTripBookerBundle:GuidedTour')->find($id);
-		}
+		return $this->render('M2TIILTripBookerBundle:FicheVoyage:fiche-voyage.html.twig', array(
+        	'value' => $voyage,
+        ));
+	}
+	
+	/**
+	 * @Route("/fiche-etape", name="fiche-etape")
+	 */
+	public function etapeAction($id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$etape = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
 		
-		return $this->render('M2TIILTripBookerBundle:Product:product.html.twig', array(
-        	'value' => $val,
+		return $this->render('M2TIILTripBookerBundle:FicheEtape:fiche-etape.html.twig', array(
+        	'value' => $etape,
+        ));
+	}
+	
+	/**
+	 * @Route("/fiche-excursion", name="fiche-excursion")
+	 */
+	public function excursionAction($id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$excursion = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
+		
+		return $this->render('M2TIILTripBookerBundle:FicheExcursion:fiche-excursion.html.twig', array(
+        	'value' => $excursion,
+        ));
+	}
+	
+	/**
+	 * @Route("/fiche-hotel", name="fiche-hotel")
+	 */
+	public function hotelAction($id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$hotel = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
+		
+		return $this->render('M2TIILTripBookerBundle:FicheHotel:fiche-hotel.html.twig', array(
+        	'value' => $hotel,
         ));
 	}
 }
