@@ -140,9 +140,84 @@ html.not-front body {
   border: none;
 }
 #wrapper-960 .main-content {
-  width: 585px;
+  width: 630px;
   display: inline-block;
   vertical-align: top;
+}
+#wrapper-960 .main-content h1 {
+  font-size: 35px;
+  font-family: "segoe";
+  color: #2980b9;
+  margin-bottom: 25px;
+}
+#wrapper-960 .main-content .inter-description {
+  font-size: 18px;
+  color: #2980b9;
+  line-height: 20px;
+  font-family: "segoe";
+  text-align: justify;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+#wrapper-960 .main-content .inter-description p {
+  margin-bottom: 10px;
+}
+#wrapper-960 .main-content .inter-description .search-city {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#wrapper-960 .main-content .list .list-item {
+  background-color: #2980b9;
+  margin-bottom: 30px;
+  height: 168px;
+  font-family: "segoe";
+  color: #ecf0f1;
+}
+#wrapper-960 .main-content .list .list-item .list-item-image {
+  width: 225px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+}
+#wrapper-960 .main-content .list .list-item .list-item-image img {
+  height: 168px;
+  width: auto;
+}
+#wrapper-960 .main-content .list .list-item .list-item-info {
+  position: relative;
+  width: 350px;
+  height: 158px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-city {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-description {
+  font-size: 14px;
+  line-height: 20px;
+}
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-price {
+  font-size: 25px;
+  position: absolute;
+  bottom: 10px;
+  right: 45%;
+}
+#wrapper-960 .main-content .list .list-item .list-item-info a {
+  font-size: 18px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-decoration: none;
+  color: #ecf0f1;
 }
 
 #header .header-nav {
