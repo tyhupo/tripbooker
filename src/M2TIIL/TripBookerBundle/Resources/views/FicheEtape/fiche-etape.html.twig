@@ -18,12 +18,11 @@
 			<img src="{{ asset('uploads/' ~ etape.image.getId ~ '.' ~ etape.image.getUri) }}" />
 		</div>
 		<div class="main-information-content">
-			<span class="start-date">{{ etape.startDate|date('d/m/Y') }}</span>
-			<span class="end-date">{{ etape.endDate|date('d/m/Y') }}</span>
-			<span class="category">{{ etape.startCity ~ ' -> ' ~ etape.endCity }}</span>
+			<span class="date">Du {{ etape.startDate|date('d/m/Y') }} au {{ etape.endDate|date('d/m/Y') }}</span>
+			<span class="city">{{ etape.startCity ~ ' -> ' ~ etape.endCity }}</span>
 			<div class="add-to-cart">
-				<span class="price">{{ etape.price }}</span>
-				<a href="#">Ajouter au panier</a>
+				<span class="price">{{ etape.price }}€</span>
+				<a href="#">Ajouter au panier ></a>
 			</div>
 		</div>
 
@@ -47,7 +46,7 @@
 					<div class="list-item-description">
 						{# hotel.text #}
 					</div>
-					<a href="{{ path('fiche-hotel',{'id':hotel.id}) }}">Voir l'hôtel</a>
+					<a href="{{ path('fiche-hotel',{'id':hotel.id}) }}">Voir l'hôtel ></a>
 				</div>
 			</div>
 		{% else %}
@@ -69,9 +68,9 @@
 						{{ excursion.place }}
 					</div>
 					<div class="list-item-description">
-						{# hotel.text #}
+						{{ excursion.text }}
 					</div>
-					<a href="{{ path('fiche-excursion',{'id':excursion.id}) }}">Voir l'excursion</a>
+					<a href="{{ path('fiche-excursion',{'id':excursion.id}) }}">Voir l'excursion ></a>
 				</div>
 			</div>
 		{% else %}

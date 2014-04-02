@@ -7,7 +7,7 @@
 			<div class="block-reservation">
 				<h2>Personnalisez votre voyage</h2>
 				<p>Choisissez les villes étapes de votre voyage pour découvrir les options associées</p>
-				<form id="package-form-1">
+				<form id="package-form-1" action="{{ path('rechercheEtape') }}" method="POST">
 					<div class="form-select-travel">
 						<select type="text" name="start-place" value="Départ">
 							<option value="0">Départ</option>
@@ -52,7 +52,10 @@
 				{% for pack in packs %}
 					<div class="item">
 						<a href="{{ path('fiche-voyage',{'id':pack.id}) }}"> 
-							<img src="{{ asset('uploads/' ~ pack.image.getId ~ '.' ~ pack.image.getUri) }}" />
+							<div class="promo-image">
+								<img src="{{ asset('uploads/' ~ pack.image.getId ~ '.' ~ pack.
+								image.getUri) }}" />
+							</div>
 							<div class="slider-travel-promo-infos">
 								<span class="titre">{{ pack.title }}</span>
 								Du <span class="startDate">{{ pack.startDate|date('d/m/Y') }}</span>

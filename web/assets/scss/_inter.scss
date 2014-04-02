@@ -85,7 +85,108 @@
 			}
 		}
 
-		.list{
+		.main-informations{
+			font-family: "segoe";
+			color: $blue;
+
+			.main-information-image{
+				width: 250px;
+				height: 190px;
+				overflow: hidden;
+				display: inline-block;
+				vertical-align: top;
+
+				img{
+					height: 190px;
+					width: auto;
+				}
+			}
+
+			.main-information-content{
+				width: 375px;
+				height: 190px;
+				position: relative;
+				display: inline-block;
+				vertical-align: top;
+
+				.date{
+					margin-left: 30px;
+					font-size: 18px;
+					line-height: 20px;
+					margin-bottom: 10px;
+					display: block;
+				}
+
+				.categories{
+
+					margin-left: 30px;
+
+					b{
+						font-size: 18px;
+						display: block;
+						margin-bottom: 20px;
+					}
+
+					.category{
+						font-size: 14px;
+						border: 1px solid $green;
+						@include border-radius(4px);
+						background-color: $green;
+						padding: 3px;
+						color: $gray;
+						margin-left: 3px;
+					}
+					margin-bottom: 20px;
+				}
+
+				.city{
+					font-size: 20px;
+					margin-left: 30px;
+					display: block;
+				}
+
+				.stars{
+					display: block;
+					margin-top: 20px;
+					font-size: 18px;
+					margin-left: 30px;
+				}
+
+				.capacity{
+					display: block;
+					margin-top: 20px;
+					font-size: 18px;
+					margin-left: 30px;
+				}
+
+				.duration{
+					display: block;
+					margin-top: 20px;
+					font-size: 18px;
+					margin-left: 30px;
+				}
+
+				.add-to-cart{
+					position: absolute;
+					bottom: 10px;
+					margin-left: 30px;
+
+					.price{
+						font-size: 22px;
+						display: inline-block;
+						width: 205px;
+					}
+
+					a{
+						color: $blue;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
+		.list,
+		.secondary-informations{
 			.list-item{
 				background-color: $blue;
 				margin-bottom: 30px;
@@ -143,6 +244,31 @@
 						color: $gray;
 					}
 				}
+			}
+		}
+
+		.secondary-informations{
+			margin-top: 30px;
+
+			h2{
+				font-size: 20px;
+				color: $blue;
+				font-family: "segoe";
+				margin-bottom: 20px;
+			}
+
+			h3{
+				font-size: 18px;
+				color: $blue;
+				font-family: "segoe";
+				margin-bottom: 10px;
+			}
+
+			p{
+				margin-bottom: 10px;
+				color: $blue;
+				font-family: "segoe";
+				margin-left: 10px;
 			}
 		}
 	}

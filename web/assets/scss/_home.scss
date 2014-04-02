@@ -71,6 +71,7 @@
 				margin-left: 60%;
 				margin-bottom: 15px;
 				border: none;
+				cursor: pointer;
 			}
 		}
 	}
@@ -120,6 +121,17 @@
 			vertical-align: top;
 			font-family: "segoe";
 
+			.promo-image{
+				overflow: hidden;
+				width: 250px;
+				height: 185px;
+				
+				img{
+					width: 250;
+					height: auto;
+				}
+			}
+			
 			&:nth-child(3){
 				margin-right: 0;
 			}

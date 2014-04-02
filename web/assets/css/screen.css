@@ -167,24 +167,116 @@ html.not-front body {
   display: inline-block;
   margin-bottom: 10px;
 }
-#wrapper-960 .main-content .list .list-item {
+#wrapper-960 .main-content .main-informations {
+  font-family: "segoe";
+  color: #2980b9;
+}
+#wrapper-960 .main-content .main-informations .main-information-image {
+  width: 250px;
+  height: 190px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+#wrapper-960 .main-content .main-informations .main-information-image img {
+  height: 190px;
+  width: auto;
+}
+#wrapper-960 .main-content .main-informations .main-information-content {
+  width: 375px;
+  height: 190px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .date {
+  margin-left: 30px;
+  font-size: 18px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  display: block;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .categories {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .categories b {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 20px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .categories .category {
+  font-size: 14px;
+  border: 1px solid #1abc9c;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #1abc9c;
+  padding: 3px;
+  color: #ecf0f1;
+  margin-left: 3px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .city {
+  font-size: 20px;
+  margin-left: 30px;
+  display: block;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .stars {
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+  margin-left: 30px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .capacity {
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+  margin-left: 30px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .duration {
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+  margin-left: 30px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .add-to-cart {
+  position: absolute;
+  bottom: 10px;
+  margin-left: 30px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .add-to-cart .price {
+  font-size: 22px;
+  display: inline-block;
+  width: 205px;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .add-to-cart a {
+  color: #2980b9;
+  text-decoration: none;
+}
+#wrapper-960 .main-content .list .list-item,
+#wrapper-960 .main-content .secondary-informations .list-item {
   background-color: #2980b9;
   margin-bottom: 30px;
   height: 168px;
   font-family: "segoe";
   color: #ecf0f1;
 }
-#wrapper-960 .main-content .list .list-item .list-item-image {
+#wrapper-960 .main-content .list .list-item .list-item-image,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-image {
   width: 225px;
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
 }
-#wrapper-960 .main-content .list .list-item .list-item-image img {
+#wrapper-960 .main-content .list .list-item .list-item-image img,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-image img {
   height: 168px;
   width: auto;
 }
-#wrapper-960 .main-content .list .list-item .list-item-info {
+#wrapper-960 .main-content .list .list-item .list-item-info,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-info {
   position: relative;
   width: 350px;
   height: 158px;
@@ -193,31 +285,57 @@ html.not-front body {
   margin-left: 30px;
   margin-top: 10px;
 }
-#wrapper-960 .main-content .list .list-item .list-item-info .list-item-title {
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-title,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-info .list-item-title {
   font-size: 22px;
   margin-bottom: 10px;
 }
-#wrapper-960 .main-content .list .list-item .list-item-info .list-item-city {
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-city,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-info .list-item-city {
   font-size: 18px;
   margin-bottom: 10px;
 }
-#wrapper-960 .main-content .list .list-item .list-item-info .list-item-description {
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-description,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-info .list-item-description {
   font-size: 14px;
   line-height: 20px;
 }
-#wrapper-960 .main-content .list .list-item .list-item-info .list-item-price {
+#wrapper-960 .main-content .list .list-item .list-item-info .list-item-price,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-info .list-item-price {
   font-size: 25px;
   position: absolute;
   bottom: 10px;
   right: 45%;
 }
-#wrapper-960 .main-content .list .list-item .list-item-info a {
+#wrapper-960 .main-content .list .list-item .list-item-info a,
+#wrapper-960 .main-content .secondary-informations .list-item .list-item-info a {
   font-size: 18px;
   position: absolute;
   bottom: 10px;
   right: 10px;
   text-decoration: none;
   color: #ecf0f1;
+}
+#wrapper-960 .main-content .secondary-informations {
+  margin-top: 30px;
+}
+#wrapper-960 .main-content .secondary-informations h2 {
+  font-size: 20px;
+  color: #2980b9;
+  font-family: "segoe";
+  margin-bottom: 20px;
+}
+#wrapper-960 .main-content .secondary-informations h3 {
+  font-size: 18px;
+  color: #2980b9;
+  font-family: "segoe";
+  margin-bottom: 10px;
+}
+#wrapper-960 .main-content .secondary-informations p {
+  margin-bottom: 10px;
+  color: #2980b9;
+  font-family: "segoe";
+  margin-left: 10px;
 }
 
 #header .header-nav {
@@ -348,6 +466,7 @@ html.not-front body {
   margin-left: 60%;
   margin-bottom: 15px;
   border: none;
+  cursor: pointer;
 }
 #section-1 .home-text {
   width: 400px;
@@ -388,6 +507,15 @@ html.not-front body {
 }
 #section-2 .slider-travel-promo .item a {
   text-decoration: none;
+}
+#section-2 .slider-travel-promo .item .promo-image {
+  overflow: hidden;
+  width: 250px;
+  height: 185px;
+}
+#section-2 .slider-travel-promo .item .promo-image img {
+  width: 250;
+  height: auto;
 }
 #section-2 .slider-travel-promo .item:nth-child(3) {
   margin-right: 0;

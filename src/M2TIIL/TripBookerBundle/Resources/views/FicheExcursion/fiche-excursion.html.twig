@@ -18,8 +18,8 @@
 			<img src="{{ asset('uploads/' ~ excursion.image.getId ~ '.' ~ excursion.image.getUri) }}" />
 		</div>
 		<div class="main-information-content">
-			<span class="place">{{ excursion.place }}</span>
-			<span class="duration">{{ excursion.duration }}</span>
+			<span class="city">{{ excursion.place }}</span>
+			<span class="duration">Durée de l'excursion : <br />{{ excursion.duration }}</span>
 		</div>
 	</div>
 {% endblock %}
