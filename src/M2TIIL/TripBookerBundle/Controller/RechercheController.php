@@ -14,8 +14,6 @@ class RechercheController extends Controller
 	*/
     public function rechercheEtapeAction($ville_depart,$ville_arrive)
     {
-
-    	$result = array();
     	$ville_depart = $_POST['start-place'];
     	$ville_arrivee = $_POST['end-place'];
 

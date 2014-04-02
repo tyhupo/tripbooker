@@ -93,7 +93,7 @@ class DefaultController extends Controller
      */
     public function voyageAction()
     {
-    		$voyages = array();
+    	$voyages = array();
 		$em = $this->getDoctrine()->getManager();
 		$voyages = $em->getRepository('M2TIILTripBookerBundle:Trip')->findAll();
 
