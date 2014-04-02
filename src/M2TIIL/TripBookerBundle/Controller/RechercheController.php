@@ -10,7 +10,7 @@ use M2TIIL\TripBookerBundle\Entity\TripStep;
 class RechercheController extends Controller
 {
 	/**
-	* @Route("/recherche-etape/{ville_depart}/{ville_arrive}", defaults={"ville_depart" = null, "ville_arrive" = null})
+	* @Route("/recherche-etape/{ville_depart}/{ville_arrive}", defaults={"ville_depart" = null, "ville_arrive" = null} , name="rechercheEtape")
 	*/
     public function rechercheEtapeAction($ville_depart,$ville_arrive)
     {
@@ -26,7 +26,7 @@ class RechercheController extends Controller
 										array('price' => 'asc'),
 										null,
 										null);
-		return $this->render('M2TIILTripBookerBundle:Product:recherche-etape.html.twig', array(
+		return $this->render('M2TIILTripBookerBundle:Recherche:recherche-etape.html.twig', array(
         	'etapes' => $etapes,
         ));
     }
