@@ -54,8 +54,96 @@
 	}
 
 	.main-content{
-		width: 585px;
+		width: 630px;
 		display: inline-block;
 		vertical-align: top;
+
+		h1{
+			font-size: 35px;
+			font-family: "segoe";
+			color: $blue;
+			margin-bottom: 25px;
+		}
+
+		.inter-description{
+			font-size: 18px;
+			color: $blue;
+			line-height: 20px;
+			font-family: "segoe";
+			text-align: justify;
+			margin-bottom: 40px;
+			display: inline-block;
+
+			p{
+				margin-bottom: 10px;
+			}
+
+			.search-city{
+				font-weight: bold;
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+		}
+
+		.list{
+			.list-item{
+				background-color: $blue;
+				margin-bottom: 30px;
+				height: 168px;
+				font-family: "segoe";
+				color: $gray;
+
+				.list-item-image{
+					width: 225px;
+					display: inline-block;
+					vertical-align: top;
+					overflow: hidden;
+
+					img{
+						height: 168px;
+						width: auto;
+					}
+				}
+
+				.list-item-info{
+					position: relative;
+					width:350px;
+					height: 158px;
+					display: inline-block;
+					vertical-align: top;
+					margin-left: 30px;
+					margin-top: 10px;
+
+					.list-item-title{
+						font-size: 22px;
+						margin-bottom: 10px;
+					}
+					.list-item-city{
+						font-size: 18px;
+						margin-bottom: 10px;
+					}
+					.list-item-description{
+						font-size: 14px;
+						line-height: 20px;
+					}
+
+					.list-item-price{
+						font-size: 25px;
+						position: absolute;
+						bottom: 10px;
+						right: 45%;
+					}
+
+					a{
+						font-size: 18px;
+						position: absolute;
+						bottom: 10px;
+						right: 10px;
+						text-decoration: none;
+						color: $gray;
+					}
+				}
+			}
+		}
 	}
 }
