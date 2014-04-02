@@ -10,6 +10,15 @@
 		<script type="text/javascript" src="{{ asset('assets/js/jquery-1.11.0.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('assets/js/document.js') }}"></script>
 		<!-- Owl carousel -->
+
+		<!-- Important Owl stylesheet -->
+		<link rel="stylesheet" href="{{ asset('assets/owl-carousel/owl.carousel.css') }}">
+		 
+		<!-- Default Theme -->
+		<link rel="stylesheet" href="{{ asset('assets/owl-carousel/owl.theme.css') }}">
+
+		<!-- Include js plugin -->
+		<script src="{{asset ('assets/owl-carousel/owl.carousel.js') }}"></script>
 		<script src="{{ asset('assets/js/jquery.cycle2.min.js') }}"></script>
 		<!-- Meta -->
 		<meta name='description' content="Réservation de voyages en toute simplicité" />
@@ -20,11 +29,13 @@
 		{% include "M2TIILTripBookerBundle::header.html.twig" %}
 
 		<div id="wrapper-960">
-			<div id="sidebar">
+			<div class="sidebar">
 				{% block sidebar %}
 				{% endblock %}
 			</div>
-			<div id="main-content">
+			<div class="main-content">
+				<h1>{% block titre %}{% endblock %}</h1>
+				<span class="inter-description">{% block description %}{% endblock %}</span>
 				{% block content %}
 				{% endblock %}
 			</div>
