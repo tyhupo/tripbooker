@@ -10,7 +10,7 @@ use M2TIIL\TripBookerBundle\Entity\GuidedTour;
 
 class ProductController extends Controller
 {
-
+	
 	public function productAction($voyage,$id)
 	{
 		$em = $this->getDoctrine()->getManager();

@@ -46,7 +46,7 @@ class DefaultController extends Controller
 		$hotels = $repository->findAll();
 		*/
     	return $this->render('M2TIILTripBookerBundle:Hotels:hotels.html.twig',array(
-    		'hotels' => array(),
+    		'hotels' => array($hotels),
 		));
     }
 
