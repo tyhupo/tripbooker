@@ -1,0 +1,25 @@
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	{{ excursion.title }}
+{% endblock %}
+
+{% block description %}
+	{{ excursion.text }}
+{% endblock %}
+
+{% block content %}
+	<div class="main-informations">
+		<div class="main-information-image">
+			<img src="{{ asset('uploads/' ~ excursion.image.getId ~ '.' ~ excursion.image.getUri) }}" />
+		</div>
+		<div class="main-information-content">
+			<span class="place">{{ excursion.place }}</span>
+			<span class="duration">{{ excursion.duration }}</span>
+		</div>
+	</div>
+{% endblock %}

@@ -22,12 +22,13 @@
 						{{ voyage.title }}
 					</div>
 					<div class="list-item-city">
-						{{ voyage.startDate ~ ' - ' ~ voyage.endDate }}
+						{{ voyage.startDate|date('d/m/Y') ~ ' - ' ~ voyage.endDate|date('d/m/Y') }}
 					</div>
 					<div class="list-item-description">
-
+						{{ voyage.text }}
 					</div>
-					<a href="/voyages/{{ voyage.id }}">Voir le voyage</a>
+					<span class="list-item-price">{{ voyage.price }}</span>
+					<a href="{{ path('fiche-voyage',{'id':voyage.id}) }}">Voir le voyage</a>
 				</div>
 			</div>
 		{% else %}

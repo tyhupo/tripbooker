@@ -1,3 +1,40 @@
-<div>
-	{{ dump(etapes) }}
-</div>
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	Les étapes correspondantes à votre recherche
+{% endblock %}
+{% block description %}
+	<p>Voici votre recherche : </p>
+	<span class="search-city">{{ depart ~ ' -> ' ~ arrivee }}</span>
+	<p> Vous pouvez effectuer une nouvelle recherche en utilisant le formulaire de personnalisation à gauche de la page.</p>
+{% endblock %}
+{% block content %}
+	<div class="list list-voyage">
+		{% for etape in etapes %}
+			<div class="etape-item list-item">
+				<div class="list-item-image">
+					<img src="{{ asset('uploads/' ~ etape.image.getId ~ '.' ~ etape.image.getUri) }}" />
+				</div>
+				<div class="list-item-info">
+					<div class="list-item-title">
+						{{ etape.title }}
+					</div>
+					<div class="list-item-city">
+						{{ etape.startDate|date('d/m/Y') ~ ' - ' ~ etape.endDate|date('d/m/Y') }}
+					</div>
+					<div class="list-item-description">
+						{{ etape.text }}
+					</div>
+					<span class="list-item-price">{{ etape.price }}</span>
+					<a href="{{ path('fiche-etape',{'id':etape.id}) }}">Voir l'étape</a>
+				</div>
+			</div>
+		{% else %}
+			<p> Il n'existe aucune étape pour le moment </p>
+		{% endfor %}
+	</div>
+{% endblock %}

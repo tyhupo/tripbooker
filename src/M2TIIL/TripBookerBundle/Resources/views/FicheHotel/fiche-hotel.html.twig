@@ -1,0 +1,26 @@
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	{{ hotel.title }}
+{% endblock %}
+
+{% block description %}
+	{# hotel.text #}
+{% endblock %}
+
+{% block content %}
+	<div class="main-informations">
+		<div class="main-information-image">
+			<img src="{{ asset('uploads/' ~ hotel.image.getId ~ '.' ~ hotel.image.getUri) }}" />
+		</div>
+		<div class="main-information-content">
+			<span class="place">{{ hotel.city }}</span>
+			<span class="stars">{{ hotel.stars }} étoile(s)</span>
+			<span class="capacity">{{ hotel.capacity }} personnes</span>
+		</div>
+	</div>
+{% endblock %}

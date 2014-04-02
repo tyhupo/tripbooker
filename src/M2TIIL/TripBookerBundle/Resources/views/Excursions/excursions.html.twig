@@ -27,7 +27,7 @@
 					<div class="list-item-description">
 						{{ excursion.text }}
 					</div>
-					<a href="/excursions/{{ excursion.id }}">Voir l'excursion</a>
+					<a href="{{ path('fiche-excursion',{'id':excursion.id}) }}">Voir l'excursion</a>
 				</div>
 			</div>
 		{% else %}

@@ -89,7 +89,7 @@ class ProductController extends Controller
 		}
 
 		return $this->render('M2TIILTripBookerBundle:FicheExcursion:fiche-excursion.html.twig', array(
-        	'value' => $excursion,
+        	'excursion' => $excursion,
         	'form_custom_Startcities' => $tab_trip_startCity,
         	'form_custom_Endcities' => $tab_trip_endCity,
         ));
@@ -117,7 +117,7 @@ class ProductController extends Controller
 		}
 
 		return $this->render('M2TIILTripBookerBundle:FicheHotel:fiche-hotel.html.twig', array(
-        	'value' => $hotel,
+        	'hotel' => $hotel,
         	'form_custom_Startcities' => $tab_trip_startCity,
         	'form_custom_Endcities' => $tab_trip_endCity,
         ));

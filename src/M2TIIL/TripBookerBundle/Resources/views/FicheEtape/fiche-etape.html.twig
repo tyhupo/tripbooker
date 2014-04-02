@@ -15,7 +15,7 @@
 {% block content %}
 	<div class="main-informations">
 		<div class="main-information-image">
-			<img src="{{ asset('uploads/' ~ etape.image.getId ~ '.' ~ voyage.image.getUri) }}" />
+			<img src="{{ asset('uploads/' ~ etape.image.getId ~ '.' ~ etape.image.getUri) }}" />
 		</div>
 		<div class="main-information-content">
 			<span class="start-date">{{ etape.startDate|date('d/m/Y') }}</span>
@@ -30,8 +30,52 @@
 	</div>
 	<div class="secondary-informations">
 		<h2>Composition de l'étape</h2>
-		{% for conveyance in etape.conveyances %}
-			{{ dump(conveyance) }}
+		<!------------------ HOTELS ---------------------------------->
+		<h3>Hôtel(s)</h3>
+		{% for hotel in etape.hotels %}
+			<div class="hotel-item list-item">
+				<div class="list-item-image">
+					<img src="{{ asset('uploads/' ~ hotel.image.getId ~ '.' ~ hotel.image.getUri) }}" />
+				</div>
+				<div class="list-item-info">
+					<div class="list-item-title">
+						{{ hotel.title }}
+					</div>
+					<div class="list-item-city">
+						{{ hotel.city }}
+					</div>
+					<div class="list-item-description">
+						{# hotel.text #}
+					</div>
+					<a href="{{ path('fiche-hotel',{'id':hotel.id}) }}">Voir l'hôtel</a>
+				</div>
+			</div>
+		{% else %}
+			<p>Aucun hôtel pour cette étape</p>
+		{% endfor %}
+
+		<!------------------ Excursions ---------------------------------->
+		<h3>Excursion(s)</h3>
+		{% for excursion in etape.guidedTours %}
+			<div class="excursion-item list-item">
+				<div class="list-item-image">
+					<img src="{{ asset('uploads/' ~ excursion.image.getId ~ '.' ~ excursion.image.getUri) }}" />
+				</div>
+				<div class="list-item-info">
+					<div class="list-item-title">
+						{{ excursion.title }}
+					</div>
+					<div class="list-item-city">
+						{{ excursion.place }}
+					</div>
+					<div class="list-item-description">
+						{# hotel.text #}
+					</div>
+					<a href="{{ path('fiche-excursion',{'id':excursion.id}) }}">Voir l'excursion</a>
+				</div>
+			</div>
+		{% else %}
+			<p>Aucune excursion pour cette étape</p>
 		{% endfor %}
 	</div>
 {% endblock %}
