@@ -15,6 +15,11 @@ class ProductController extends Controller
 	 */
 	public function voyageAction($id)
 	{
+		if($id == null)
+		{
+			die("ID manquant");
+		}
+		
 		$em = $this->getDoctrine()->getManager();
 		$voyage = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
 		
@@ -28,8 +33,13 @@ class ProductController extends Controller
 	 */
 	public function etapeAction($id)
 	{
+		if($id == null)
+		{
+			die("ID manquant");
+		}
+		
 		$em = $this->getDoctrine()->getManager();
-		$etape = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
+		$etape = $em->getRepository('M2TIILTripBookerBundle:TripStep')->find($id);
 		
 		return $this->render('M2TIILTripBookerBundle:FicheEtape:fiche-etape.html.twig', array(
         	'value' => $etape,
@@ -41,8 +51,13 @@ class ProductController extends Controller
 	 */
 	public function excursionAction($id)
 	{
+		if($id == null)
+		{
+			die("ID manquant");
+		}
+		
 		$em = $this->getDoctrine()->getManager();
-		$excursion = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
+		$excursion = $em->getRepository('M2TIILTripBookerBundle:GuidedTour')->find($id);
 		
 		return $this->render('M2TIILTripBookerBundle:FicheExcursion:fiche-excursion.html.twig', array(
         	'value' => $excursion,
@@ -54,8 +69,13 @@ class ProductController extends Controller
 	 */
 	public function hotelAction($id)
 	{
+		if($id == null)
+		{
+			die("ID manquant");
+		}
+		
 		$em = $this->getDoctrine()->getManager();
-		$hotel = $em->getRepository('M2TIILTripBookerBundle:Trip')->find($id);
+		$hotel = $em->getRepository('M2TIILTripBookerBundle:Hotel')->find($id);
 		
 		return $this->render('M2TIILTripBookerBundle:FicheHotel:fiche-hotel.html.twig', array(
         	'value' => $hotel,
