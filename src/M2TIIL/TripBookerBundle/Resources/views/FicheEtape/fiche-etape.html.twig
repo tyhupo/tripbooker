@@ -1,0 +1,37 @@
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	{{ voyage.id }}
+{% endblock %}
+
+{% block description %}
+	{{ voyage.text }}
+{% endblock %}
+
+{% block content %}
+	<div class="main-informations">
+		<div class="main-information-image">
+			<img src="{{ asset('uploads/' ~ voyage.image.getId ~ '.' ~ voyage.image.getUri) }}" />
+		</div>
+		<div class="main-information-content">
+			<span class="start-date">{{ voyage.startDate|date('d/m/Y') }}</span>
+			<span class="end-date">{{ voyage.endDate|date('d/m/Y') }}</span>
+			<span class="category">{{ voyage.category }}</span>
+			<div class="add-to-cart">
+				<span class="price">{{ voyage.price }}</span>
+				<a href="#">Ajouter au panier</a>
+			</div>
+		</div>
+
+	</div>
+	<div class="secondary-informations">
+		<h2>Composition de l'étape</h2>
+		{% for step in voyage.steps %}
+			{{ dump(step) }}
+		{% endfor %}
+	</div>
+{% endblock %}

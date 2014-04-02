@@ -311,6 +311,9 @@ html.not-front body {
   vertical-align: top;
   font-family: "segoe";
 }
+#section-2 .slider-travel-promo .item a {
+  text-decoration: none;
+}
 #section-2 .slider-travel-promo .item:nth-child(3) {
   margin-right: 0;
 }

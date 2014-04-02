@@ -13,18 +13,18 @@
 {% block content %}
 	<div class="list list-excursion">
 		{% for excursion in excursions %}
-			<div class="excursion-item">
-				<div class="excursion-item-image">
+			<div class="excursion-item list-item">
+				<div class="list-item-image">
 					<img src="{{ asset('uploads/' ~ excursion.image.getId ~ '.' ~ excursion.image.getUri) }}" />
 				</div>
-				<div class="excursion-item-info">
-					<div class="excursion-item-title">
+				<div class="list-item-info">
+					<div class="list-item-title">
 						{{ excursion.title }}
 					</div>
-					<div class="excursion-item-city">
+					<div class="list-item-city">
 						{{ excursion.place }}
 					</div>
-					<div class="excursion-item-description">
+					<div class="list-item-description">
 						{{ excursion.text }}
 					</div>
 					<a href="/excursions/{{ excursion.id }}">Voir l'excursion</a>

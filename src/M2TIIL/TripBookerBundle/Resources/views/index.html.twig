@@ -50,14 +50,16 @@
 
 			<div id="packs-slider" class="slider-travel-promo">
 				{% for pack in packs %}
-					<div class="item"> 
-						<img src="{{ asset('uploads/' ~ pack.image.getId ~ '.' ~ pack.image.getUri) }}" />
-						<div class="slider-travel-promo-infos">
-							<span class="titre">{{ pack.title }}</span>
-							Du <span class="startDate">{{ pack.startDate|date('d/m/Y') }}</span>
-							 au <span class="endDate">{{ pack.endDate|date('d/m/Y') }}</span>
-						</div>
-						<span class="slider-travel-promo-price">{{ pack.price }} €</span>
+					<div class="item">
+						<a href="{{ path('fiche-voyage',{'id':pack.id}) }}"> 
+							<img src="{{ asset('uploads/' ~ pack.image.getId ~ '.' ~ pack.image.getUri) }}" />
+							<div class="slider-travel-promo-infos">
+								<span class="titre">{{ pack.title }}</span>
+								Du <span class="startDate">{{ pack.startDate|date('d/m/Y') }}</span>
+								 au <span class="endDate">{{ pack.endDate|date('d/m/Y') }}</span>
+							</div>
+							<span class="slider-travel-promo-price">{{ pack.price }} €</span>
+						</a>
 					</div>
 				{% else %}
 					<li>Pas de Pack trouvé.</li>
