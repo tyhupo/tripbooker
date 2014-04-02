@@ -11,7 +11,7 @@ use M2TIIL\TripBookerBundle\Entity\GuidedTour;
 class ProductController extends Controller
 {
 	/**
-	 * @Route("/", name="tripBooker_home")
+	 * @Route("/fiche", name="fiche")
 	 */
 	public function productAction($voyage,$id)
 	{
