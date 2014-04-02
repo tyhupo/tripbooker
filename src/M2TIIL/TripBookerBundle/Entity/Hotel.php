@@ -41,6 +41,13 @@ class Hotel
      * @ORM\Column(name="capacity", type="integer")
      */
     private $capacity;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text")
+     */
+    private $text;
 
     /**
      * @var string
@@ -185,5 +192,28 @@ class Hotel
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set text
+     *
+     * @param string $text
+     * @return Hotel
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text
+     *
+     * @return string 
+     */
+    public function getText()
+    {
+        return $this->text;
     }
 }

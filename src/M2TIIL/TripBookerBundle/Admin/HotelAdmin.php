@@ -17,6 +17,13 @@ class HotelAdmin extends Admin
             ->add('stars', 'integer', array('label' => "Nombre d'étoiles"))
             ->add('capacity', 'integer', array('label' => "Capacité"))
             ->add('city', 'text', array('label' => "Ville"))
+			->add('text', 'textarea', array(
+                'label' => 'Texte', 
+                'attr' => array(
+                    'rows' => 10,
+                    'cols' => 50,
+                ),
+            ))
             ->add('image', 'sonata_type_admin', array(
                 'label' => 'Image',
                 //'required' => false,
