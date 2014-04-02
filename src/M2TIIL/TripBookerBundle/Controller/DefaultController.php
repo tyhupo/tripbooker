@@ -36,6 +36,8 @@ class DefaultController extends Controller
         ));
     }
 	
+	
+	
     /**
      * @Route("/hotels/", name="tripbooker_hotels_list")
      */
