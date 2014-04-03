@@ -6,9 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use M2TIIL\TripBookerBundle\Entity\Trip;
+use M2TIIL\TripBookerBundle\Entity\TripStep;
 use M2TIIL\TripBookerBundle\Entity\GuidedTour;
 
-class ProductController extends Controller
+class PanierController extends Controller
 {
 	/**
 	 * @Route("/ajouter-voyage-panier/{id}", name="ajouter-voyage-panier")
@@ -26,7 +27,7 @@ class ProductController extends Controller
          
         if(!$session->has('panier'))
         {
-            $session->set('panier' ,array('idVoyages' => array(),'idEtapes' => array(),'idExcursions' => array());
+            $session->set('panier' ,array('idVoyages' => array(),'idEtapes' => array(),'idExcursions' => array()));
         }
 		
 		$session = $this->getRequest()->getSession();
@@ -78,7 +79,7 @@ class ProductController extends Controller
          
         if(!$session->has('panier'))
         {
-            $session->set('panier' ,array('idVoyages' => array(),'idEtapes' => array(),'idExcursions' => array());
+            $session->set('panier' ,array('idVoyages' => array(),'idEtapes' => array(),'idExcursions' => array()));
         }
 		
 		$session = $this->getRequest()->getSession();
@@ -131,7 +132,7 @@ class ProductController extends Controller
          
         if(!$session->has('panier'))
         {
-            $session->set('panier' ,array('idVoyages' => array(),'idEtapes' => array(),'idExcursions' => array());
+            $session->set('panier' ,array('idVoyages' => array(),'idEtapes' => array(),'idExcursions' => array()));
         }
 		
 		$session = $this->getRequest()->getSession();

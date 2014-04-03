@@ -40,6 +40,11 @@ class TripOrder
      */
     private $trip;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="TripStepOrder") 
+     */
+    protected $steps;
+
 
     /**
      * Get id
