@@ -40,6 +40,30 @@ class TripOrder
      */
     private $trip;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="TripOption") 
+     */
+    protected $options;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Conveyance") 
+     */
+    protected $conveyances;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ConveyanceOption") 
+     */
+    private $conveyancesOptions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Hotel") 
+     */
+    private $hotels;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="GuidedTour") 
+     */
+    private $guidedTours;
 
     /**
      * Get id
