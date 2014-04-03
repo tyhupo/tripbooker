@@ -31,22 +31,74 @@
 
 			.form-select-travel{
 				margin-bottom: 20px;
-
-				select{
+				.picto{
 					width: 190px;
 					height: 40px;
-					font-size: 21px;
-					border: none;
-					color: $blue;
+					display: inline-block;
 					margin-bottom: 20px;
-					padding-left: 45px;
-					font-weight: bold;
 
-					&[name=start-date],
-					&[name=end-date]{
-						margin-left: 30px;
+					select{
+						width: 190px;
+						height: 40px;
+						font-size: 21px;
+						border: none;
+						color: $blue;
+						padding-left: 45px;
+						font-weight: bold;
+
+						&[name=start-date],
+						&[name=end-date]{
+							margin-left: 30px;
+						}
 					}
 				}
+				
+
+				.picto-date-depart:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e602";
+					left: 40px;
+					top: 35px;
+				}
+
+				.picto-place-depart:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e605";
+					left: 10px;
+					top: 35px;
+				}
+
+				.picto-date-arrivee:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e602";
+					left: 40px;
+					top: 35px;
+				}
+
+				.picto-place-arrivee:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e605";
+					left: 10px;
+					top: 35px;
+				}
+
+
 			}
 			.form-select-number{
 				select{
@@ -127,7 +179,7 @@
 				height: 185px;
 				
 				img{
-					width: 250;
+					width: 250px;
 					height: auto;
 				}
 			}

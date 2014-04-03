@@ -72,7 +72,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 @font-face {
   font-family: "tripicto";
   src: url('../fonts/../fonts/Tripicto.eot');
-  src: url('../fonts/../fonts/Tripicto.eot?#iefix') format('eot'), url('../fonts/../fonts/Tripicto.woff') format('woff'), url('../fonts/../fonts/Tripicto.ttf') format('truetype'), url('../fonts/../fonts/Tripicto.svg') format('svg');
+  src: url('../fonts/../fonts/Tripicto.eot?#iefix') format('eot'), url('../fonts/../fonts/Tripicto.ttf') format('truetype');
 }
 
 body .wrapper {
@@ -433,18 +433,63 @@ html.not-front body {
 #section-1 .block-reservation form .form-select-travel {
   margin-bottom: 20px;
 }
-#section-1 .block-reservation form .form-select-travel select {
+#section-1 .block-reservation form .form-select-travel .picto {
+  width: 190px;
+  height: 40px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+#section-1 .block-reservation form .form-select-travel .picto select {
   width: 190px;
   height: 40px;
   font-size: 21px;
   border: none;
   color: #2980b9;
-  margin-bottom: 20px;
   padding-left: 45px;
   font-weight: bold;
 }
-#section-1 .block-reservation form .form-select-travel select[name=start-date], #section-1 .block-reservation form .form-select-travel select[name=end-date] {
+#section-1 .block-reservation form .form-select-travel .picto select[name=start-date], #section-1 .block-reservation form .form-select-travel .picto select[name=end-date] {
   margin-left: 30px;
+}
+#section-1 .block-reservation form .form-select-travel .picto-date-depart:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e602";
+  left: 40px;
+  top: 35px;
+}
+#section-1 .block-reservation form .form-select-travel .picto-place-depart:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e605";
+  left: 10px;
+  top: 35px;
+}
+#section-1 .block-reservation form .form-select-travel .picto-date-arrivee:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e602";
+  left: 40px;
+  top: 35px;
+}
+#section-1 .block-reservation form .form-select-travel .picto-place-arrivee:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e605";
+  left: 10px;
+  top: 35px;
 }
 #section-1 .block-reservation form .form-select-number select {
   width: 215px;
@@ -514,7 +559,7 @@ html.not-front body {
   height: 185px;
 }
 #section-2 .slider-travel-promo .item .promo-image img {
-  width: 250;
+  width: 250px;
   height: auto;
 }
 #section-2 .slider-travel-promo .item:nth-child(3) {
