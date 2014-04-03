@@ -16,8 +16,6 @@ class PanierController extends Controller
 	 */
 	public function ajouterVoyagePanierAction($id)
 	{
-		$id = $_POST["id"];
-		
 		if($id == null)
 		{
 			die("ID voyage manquant");
@@ -41,13 +39,13 @@ class PanierController extends Controller
 	/**
 	 * @Route("/panier/", name="panier")
 	 */
-	public function listerVoyagePanierAction()
+	public function listerPanierAction()
 	{
+		//Partie lister
 		$session = $this->getRequest()->getSession();
 		$voyages = array();
 		$etapes = array();
 		
-
 		if($session->has('panier'))
         {
 			$panier = $session->get('panier');
@@ -69,9 +67,22 @@ class PanierController extends Controller
 				$i++;
 			}
 		}
+		
+		//Partie François
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+		
+		//Retour
 		return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
 			'voyages' => $voyages,
-			'etapes' => $etapes
+			'etapes' => $etapes,
+			'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
 		));
 	}
 	
@@ -80,8 +91,6 @@ class PanierController extends Controller
 	 */
 	public function ajouterEtapePanierAction($id)
 	{
-		$id = $_POST["id"];
-		
 		if($id == null)
 		{
 			die("ID etape manquant");
@@ -133,8 +142,6 @@ class PanierController extends Controller
 	 */
 	public function ajouterExcursionPanierAction($id)
 	{
-		$id = $_POST["id"];
-		
 		if($id == null)
 		{
 			die("ID excursion manquant");
