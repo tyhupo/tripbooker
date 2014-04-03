@@ -33,26 +33,11 @@ class CommandeController extends Controller
 				$tripOrder->setOrder($order);
 				$voyage = $repository->find($idVoyage);
 				$tripOrder->setTrip($voyage);
-				foreach($voyage->getSteps() as $step)
-				{
-					foreach($session->get('panier_voyage') as $id_step)
-					{
-						if($id_step == $step->getId())
-						{
-							$stepOrder = new TripStepOrder();
-							$stepOrder->setStep($step);
-							//A completer si on ajoute les excursions, hotels et transports
-							
-							$tripOrder->addStep($stepOrder);
-						}
-					}
-				}
 				$em->persist($tripOrder);
 				$em->flush();
 				
 				$order->addOrder($tripOrder);
 			}
-			
 		}
 		
 		return $this->render('M2TIILTripBookerBundle:Commander:commander.html.twig',array());
