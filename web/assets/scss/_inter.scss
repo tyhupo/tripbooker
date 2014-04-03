@@ -15,6 +15,7 @@
 		background-color: $blue;
 		color: $gray;
 		margin-right: 40px;
+		margin-bottom: 50px;
 
 		h2{
 			margin: 30px 30px 30px 30px;
@@ -28,16 +29,66 @@
 			display: none;
 		}
 
-		select{
-			margin: 0px 30px 20px 30px;
-			padding-left: 50px;
-			font-family: "segoe";
-			font-size: 21px;
-			color: $blue;
+		.picto{
 			width: 190px;
 			height: 40px;
-			border: none;
+			display: inline-block;
+			margin: 0px 30px 20px 30px;
+
+			select{
+				padding-left: 50px;
+				font-family: "segoe";
+				font-size: 21px;
+				color: $blue;
+				width: 190px;
+				height: 40px;
+				border: none;
+			}
 		}
+
+		.picto-date-depart:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e602";
+					left: 10px;
+					top: 35px;
+				}
+
+				.picto-place-depart:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e605";
+					left: 10px;
+					top: 35px;
+				}
+
+				.picto-date-arrivee:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e602";
+					left: 10px;
+					top: 35px;
+				}
+
+				.picto-place-arrivee:before{
+					font-family: "tripicto";
+					font-size: 30px;
+					color: $blue;
+					position: relative;
+					z-index: 2;
+					content: "\e605";
+					left: 10px;
+					top: 35px;
+				}
 
 		input[type=submit]{
 			width: 145px;
@@ -46,10 +97,11 @@
 			background-color: $orange;
 			color: white;
 			font-size: 21px;
-			margin-top: 20px;
+			margin-top: 30px;
 			margin-left: 40%;
 			margin-bottom: 15px;
 			border: none;
+			cursor: pointer;
 		}
 	}
 

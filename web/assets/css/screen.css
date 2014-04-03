@@ -106,6 +106,7 @@ html.not-front body {
   background-color: #2980b9;
   color: #ecf0f1;
   margin-right: 40px;
+  margin-bottom: 50px;
 }
 #wrapper-960 .sidebar h2 {
   margin: 30px 30px 30px 30px;
@@ -117,8 +118,13 @@ html.not-front body {
 #wrapper-960 .sidebar p {
   display: none;
 }
-#wrapper-960 .sidebar select {
+#wrapper-960 .sidebar .picto {
+  width: 190px;
+  height: 40px;
+  display: inline-block;
   margin: 0px 30px 20px 30px;
+}
+#wrapper-960 .sidebar .picto select {
   padding-left: 50px;
   font-family: "segoe";
   font-size: 21px;
@@ -127,6 +133,46 @@ html.not-front body {
   height: 40px;
   border: none;
 }
+#wrapper-960 .sidebar .picto-date-depart:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e602";
+  left: 10px;
+  top: 35px;
+}
+#wrapper-960 .sidebar .picto-place-depart:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e605";
+  left: 10px;
+  top: 35px;
+}
+#wrapper-960 .sidebar .picto-date-arrivee:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e602";
+  left: 10px;
+  top: 35px;
+}
+#wrapper-960 .sidebar .picto-place-arrivee:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #2980b9;
+  position: relative;
+  z-index: 2;
+  content: "\e605";
+  left: 10px;
+  top: 35px;
+}
 #wrapper-960 .sidebar input[type=submit] {
   width: 145px;
   height: 40px;
@@ -134,10 +180,11 @@ html.not-front body {
   background-color: #f39c12;
   color: white;
   font-size: 21px;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 40%;
   margin-bottom: 15px;
   border: none;
+  cursor: pointer;
 }
 #wrapper-960 .main-content {
   width: 630px;

@@ -16,7 +16,7 @@ class PanierController extends Controller
 	 */
 	public function ajouterVoyagePanierAction($id)
 	{
-		$id = $_POST["id"];
+		//$id = $_POST["id"];
 		
 		if($id == null)
 		{
@@ -35,7 +35,7 @@ class PanierController extends Controller
         $panier = $session->get('panier');
         array_push($panier['idVoyages'], $id);
  
-        return $this->render('M2TIILTripBookerBundle:AjouterVoyagePanier:ajouter-voyage-panier.html.twig');
+        return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig');
 	}
 	
 	/**
@@ -68,7 +68,7 @@ class PanierController extends Controller
 	 */
 	public function ajouterEtapePanierAction($id)
 	{
-		$id = $_POST["id"];
+		//$id = $_POST["id"];
 		
 		if($id == null)
 		{
