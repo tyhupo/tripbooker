@@ -588,3 +588,57 @@ html.not-front body {
   text-align: right;
   padding-right: 10px;
 }
+
+#footer {
+  height: 250px;
+  background-color: #2980b9;
+  margin-top: 60px;
+}
+#footer .footer-text {
+  font-family: "segoe";
+  padding-top: 30px;
+  margin-left: 25%;
+}
+#footer .footer-text .footer-cr {
+  width: 300px;
+  display: inline-block;
+}
+#footer .footer-text .footer-cr h2 {
+  font-weight: bold;
+  font-size: 26px;
+  color: white;
+  margin-bottom: 20px;
+}
+#footer .footer-text .footer-cr h3 {
+  color: white;
+  font-size: 18px;
+  margin-top: 30px;
+}
+#footer .footer-text .footer-cr p {
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  margin-bottom: 2px;
+}
+#footer .footer-text .footer-menubar {
+  height: 60px;
+  width: 600px;
+  margin-left: 30px;
+  position: relative;
+  bottom: 50px;
+  display: inline-block;
+}
+#footer .footer-text .footer-menubar .footer-menu {
+  display: inline-block;
+}
+#footer .footer-text .footer-menubar .footer-menu li {
+  text-align: center;
+  display: inline-block;
+  width: 190px;
+}
+#footer .footer-text .footer-menubar .footer-menu li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+}
