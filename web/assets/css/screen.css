@@ -100,7 +100,7 @@ html.not-front body {
 }
 #wrapper-960 .sidebar {
   width: 280px;
-  height: 450px;
+  height: 490px;
   display: inline-block;
   vertical-align: top;
   background-color: #2980b9;
@@ -116,7 +116,12 @@ html.not-front body {
   font-weight: bold;
 }
 #wrapper-960 .sidebar p {
-  display: none;
+  font-family: "segoe";
+  color: white;
+  font-size: 18px;
+  width: 220px;
+  margin-left: 30px;
+  font-style: italic;
 }
 #wrapper-960 .sidebar .picto {
   width: 190px;
@@ -427,6 +432,14 @@ html.not-front body {
 #header .header-nav .header-menu li.cart, #header .header-nav .header-menu li.user {
   width: 50px;
   cursor: pointer;
+}
+#header .header-nav .header-menu li.cart a, #header .header-nav .header-menu li.user a {
+  display: inline-block;
+  width: 50px;
+  height: 80px;
+  position: relative;
+  top: -80px;
+  z-index: 3;
 }
 #header .header-nav .header-menu li.cart:before {
   font-family: "tripicto";

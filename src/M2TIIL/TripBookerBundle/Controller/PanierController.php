@@ -16,8 +16,7 @@ class PanierController extends Controller
 	 */
 	public function ajouterVoyagePanierAction($id)
 	{
-		//$id = $_POST["id"];
-		
+
 		if($id == null)
 		{
 			die("ID voyage manquant");
@@ -34,20 +33,22 @@ class PanierController extends Controller
  
         $panier = $session->get('panier');
         array_push($panier['idVoyages'], $id);
- 
-        return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig');
-	}
-	
-	/**
-	 * @Route("/panier/", name="panier")
-	 */
-	public function listerVoyagePanierAction()
-	{
+
+        $em = $this->getDoctrine()->getManager();
+        //Partie François
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+
+		//Partie lister
 		$session = $this->getRequest()->getSession();
 		$voyages = array();
 		$etapes = array();
 		
-
 		if($session->has('panier'))
         {
 			$panier = $session->get('panier');
@@ -69,9 +70,62 @@ class PanierController extends Controller
 				$i++;
 			}
 		}
+ 
+        return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
+        	'voyages' => $voyages,
+			'etapes' => $etapes,
+        	'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
+        ));
+	}
+	
+	/**
+	 * @Route("/panier/", name="panier")
+	 */
+	public function listerPanierAction()
+	{
+		//Partie lister
+		$session = $this->getRequest()->getSession();
+		$voyages = array();
+		$etapes = array();
+		
+		if($session->has('panier'))
+        {
+			$panier = $session->get('panier');
+			$em = $this->getDoctrine()->getManager();
+			
+			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
+			$i = 0;
+			foreach ($panier["idVoyages"] as $idVoyage)
+			{
+				$voyages[$i] = $repository->find($idvoyage);
+				$i++;
+			}
+			
+			$repository = $em->getRepository('M2TIILTripBookerBundle:TripStep');
+			$i = 0;
+			foreach ($panier["idEtapes"] as $idEtape)
+			{
+				$etapes[$i] = $repository->find($idEtape);
+				$i++;
+			}
+		}
+		
+		//Partie François
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+		
+		//Retour
 		return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
 			'voyages' => $voyages,
-			'etapes' => $etapes
+			'etapes' => $etapes,
+			'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
 		));
 	}
 	
@@ -80,8 +134,7 @@ class PanierController extends Controller
 	 */
 	public function ajouterEtapePanierAction($id)
 	{
-		//$id = $_POST["id"];
-		
+
 		if($id == null)
 		{
 			die("ID etape manquant");
@@ -98,8 +151,50 @@ class PanierController extends Controller
  
         $panier = $session->get('panier');
         array_push($panier['idEtapes'], $id);
+
+        $em = $this->getDoctrine()->getManager();
+        //Partie François
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+
+		//Partie lister
+		$session = $this->getRequest()->getSession();
+		$voyages = array();
+		$etapes = array();
+		
+		if($session->has('panier'))
+        {
+			$panier = $session->get('panier');
+			$em = $this->getDoctrine()->getManager();
+			
+			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
+			$i = 0;
+			foreach ($panier["idVoyages"] as $idVoyage)
+			{
+				$voyages[$i] = $repository->find($idvoyage);
+				$i++;
+			}
+			
+			$repository = $em->getRepository('M2TIILTripBookerBundle:TripStep');
+			$i = 0;
+			foreach ($panier["idEtapes"] as $idEtape)
+			{
+				$etapes[$i] = $repository->find($idEtape);
+				$i++;
+			}
+		}
  
-        return $this->render('M2TIILTripBookerBundle:AjouterEtapePanier:ajouter-etape-panier.html.twig');
+        return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
+        	'voyages' => $voyages,
+			'etapes' => $etapes,
+        	'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
+        ));
 	}
 	
 	/**
@@ -133,8 +228,6 @@ class PanierController extends Controller
 	 */
 	public function ajouterExcursionPanierAction($id)
 	{
-		$id = $_POST["id"];
-		
 		if($id == null)
 		{
 			die("ID excursion manquant");
