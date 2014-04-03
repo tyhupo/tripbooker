@@ -11,10 +11,13 @@
 
 {% endblock %}
 {% block content %}
+	<div class="terminate-order">
+		<a href="#">Valider le panier et terminer la commande ></a>
+	</div>
 	<div class="list list-voyage list-panier">
 		<h2>Mes voyages ajoutés</h2>
-		{% for voyage in voyages %}
-			<div class="voyage-item list-item">
+		{% for key,voyage in voyages %}
+			<div class="voyage-item list-item list-item-panier">
 				<div class="list-item-image">
 					<img src="{{ asset('uploads/' ~ voyage.image.getId ~ '.' ~ voyage.image.getUri) }}" />
 				</div>
@@ -26,7 +29,8 @@
 						{{ voyage.startDate|date('d/m/Y') ~ ' au ' ~ voyage.endDate|date('d/m/Y') }}
 					</div>
 					<span class="list-item-price">{{ voyage.price }}€</span>
-					<a href="{{ path('fiche-voyage',{'id':voyage.id}) }}">Voir le voyage ></a>
+					<a href="{{ path('fiche-voyage',{'id':voyage.id}) }}" class="see">Voir le voyage ></a>
+					<a href="#" class="delete"></a>
 				</div>
 			</div>
 		{% else %}
@@ -35,8 +39,8 @@
 	</div>
 	<div class="list list-voyage list-panier">
 		<h2>Mes étapes ajoutées</h2>
-		{% for etape in etapes %}
-			<div class="etape-item list-item">
+		{% for key,etape in etapes %}
+			<div class="etape-item list-item list-item-panier">
 				<div class="list-item-image">
 					<img src="{{ asset('uploads/' ~ etape.image.getId ~ '.' ~ etape.image.getUri) }}" />
 				</div>
@@ -47,12 +51,16 @@
 					<div class="list-item-city">
 						{{ etape.startDate|date('d/m/Y') ~ ' - ' ~ etape.endDate|date('d/m/Y') }}
 					</div>
-					<span class="list-item-price">{{ etape.price }}</span>
-					<a href="{{ path('fiche-etape',{'id':etape.id}) }}">Voir l'étape ></a>
+					<span class="list-item-price">{{ etape.price }}€</span>
+					<a href="{{ path('fiche-etape',{'id':etape.id}) }}" class="see">Voir l'étape ></a>
+					<a href="#" class="delete" ></a>
 				</div>
 			</div>
 		{% else %}
 			<p> Aucune étape ajouté au panier </p>
 		{% endfor %}
+	</div>
+	<div class="terminate-order">
+		<a href="#">Valider le panier et terminer la commande ></a>
 	</div>
 {% endblock %}

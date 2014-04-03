@@ -321,6 +321,48 @@
 					}
 				}
 			}
+
+			.list-item-panier{
+				height: 100px;
+
+				.list-item-image{
+					max-width: 225px;
+					display: inline-block;
+					vertical-align: top;
+					overflow: hidden;
+
+					img{
+						height: 100px;
+						width: auto;
+					}
+				}
+
+				.list-item-info{
+					height: 90px;
+				}
+
+				.list-item-price{
+					right: 20% !important;
+				}
+
+				.see{
+					right: 220px !important;
+				}
+
+				.delete{
+					display: inline-block;
+					width: 30px;
+					height: 30px;
+					z-index: 2;
+					margin-bottom: 25px;
+					&:before{
+						content: "\e60b";
+						font-size: 30px;
+						color: $gray;
+						font-family: "tripicto";
+					}
+				}
+			}
 		}
 
 		.secondary-informations{
@@ -331,6 +373,21 @@
 				color: $blue;
 				font-family: "segoe";
 				margin-bottom: 10px;
+			}
+		}
+
+		.terminate-order{
+			display: inline-block;
+			margin-left: 47%;
+			font-family: "segoe";
+			padding: 5px 10px 5px 10px;
+			background-color: $orange;
+			color: $gray;
+
+
+			a{
+				text-decoration: none;
+				color: $gray;
 			}
 		}
 	}
