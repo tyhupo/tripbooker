@@ -30,7 +30,7 @@
 					</div>
 					<span class="list-item-price">{{ voyage.price }}€</span>
 					<a href="{{ path('fiche-voyage',{'id':voyage.id}) }}" class="see">Voir le voyage ></a>
-					<a href="#" class="delete"></a>
+					<a href="{{ path('supprimer-voyage-panier',{'id':key}) }}" class="delete"></a>
 				</div>
 			</div>
 		{% else %}
@@ -53,7 +53,7 @@
 					</div>
 					<span class="list-item-price">{{ etape.price }}€</span>
 					<a href="{{ path('fiche-etape',{'id':etape.id}) }}" class="see">Voir l'étape ></a>
-					<a href="#" class="delete" ></a>
+					<a href="{{ path('supprimer-etape-panier',{'id':key}) }}" class="delete" ></a>
 				</div>
 			</div>
 		{% else %}

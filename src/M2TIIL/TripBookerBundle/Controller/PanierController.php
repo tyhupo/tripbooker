@@ -266,7 +266,7 @@ class PanierController extends Controller
 			$i = 0;
 			foreach($session->get('panier_voyage') as $id_voyage)
 			{
-				$voyages[$key] = $repository->find($id_voyage);
+				$voyages[$id] = $repository->find($id_voyage);
 				$i++;
 			}
 		}
