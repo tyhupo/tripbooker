@@ -124,4 +124,37 @@ class TripOrder
     {
         return $this->trip;
     }
+	
+	/**
+     * Add steps
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripStepOrder $steps
+     * @return Trip
+     */
+    public function addStep(\M2TIIL\TripBookerBundle\Entity\TripStepOrder $steps)
+    {
+        $this->steps[] = $steps;
+
+        return $this;
+    }
+
+    /**
+     * Remove steps
+     *
+     * @param \M2TIIL\TripBookerBundle\Entity\TripStepOrder $steps
+     */
+    public function removeStep(\M2TIIL\TripBookerBundle\Entity\TripStepOrder $steps)
+    {
+        $this->steps->removeElement($steps);
+    }
+
+    /**
+     * Get steps
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSteps()
+    {
+        return $this->steps;
+    }
 }
