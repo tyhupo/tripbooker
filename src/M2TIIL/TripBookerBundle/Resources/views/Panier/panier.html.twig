@@ -11,7 +11,7 @@
 
 {% endblock %}
 {% block content %}
-	<div class="list list-voyage">
+	<div class="list list-voyage list-panier">
 		<h2>Mes voyages ajoutés</h2>
 		{% for voyage in voyages %}
 			<div class="voyage-item list-item">
@@ -25,9 +25,6 @@
 					<div class="list-item-city">Du
 						{{ voyage.startDate|date('d/m/Y') ~ ' au ' ~ voyage.endDate|date('d/m/Y') }}
 					</div>
-					<div class="list-item-description">
-						{{ voyage.text }}
-					</div>
 					<span class="list-item-price">{{ voyage.price }}€</span>
 					<a href="{{ path('fiche-voyage',{'id':voyage.id}) }}">Voir le voyage ></a>
 				</div>
@@ -36,7 +33,7 @@
 			<p> aucun voyage ajouté au panier </p>
 		{% endfor %}
 	</div>
-	<div class="list list-voyage">
+	<div class="list list-voyage list-panier">
 		<h2>Mes étapes ajoutées</h2>
 		{% for etape in etapes %}
 			<div class="etape-item list-item">
@@ -49,9 +46,6 @@
 					</div>
 					<div class="list-item-city">
 						{{ etape.startDate|date('d/m/Y') ~ ' - ' ~ etape.endDate|date('d/m/Y') }}
-					</div>
-					<div class="list-item-description">
-						{{ etape.text }}
 					</div>
 					<span class="list-item-price">{{ etape.price }}</span>
 					<a href="{{ path('fiche-etape',{'id':etape.id}) }}">Voir l'étape ></a>
