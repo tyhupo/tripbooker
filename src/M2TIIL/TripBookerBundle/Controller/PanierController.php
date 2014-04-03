@@ -283,7 +283,7 @@ class PanierController extends Controller
 					$temp[$key] = $id_etape;
 				}
 			}
-			$session->set('panier_voyage', $temp);
+			$session->set('panier_etape', $temp);
 		}
 		
 		//Partie François
