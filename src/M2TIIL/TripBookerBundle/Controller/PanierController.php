@@ -70,12 +70,9 @@ class PanierController extends Controller
 			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
 		}
  
-        return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
-        	'voyages' => $voyages,
-			'etapes' => $etapes,
-			'form_custom_Startcities' => $tab_trip_startCity,
-        	'form_custom_Endcities' => $tab_trip_endCity,
-        ));
+  
+        	$route = 'panier';
+        	return $this->redirect($this->generateUrl($route));
 	}
 	
 	/**
@@ -135,12 +132,8 @@ class PanierController extends Controller
 			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
 		}
  
-        return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
-        	'voyages' => $voyages,
-			'etapes' => $etapes,
-			'form_custom_Startcities' => $tab_trip_startCity,
-        	'form_custom_Endcities' => $tab_trip_endCity,
-        ));
+       	$route = 'panier';
+        	return $this->redirect($this->generateUrl($route));
 	}
 	
 	/**
@@ -251,12 +244,8 @@ class PanierController extends Controller
 			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
 		}
  
-		return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
-			'voyages' => $voyages,
-			'etapes' => $etapes,
-			'form_custom_Startcities' => $tab_trip_startCity,
-			'form_custom_Endcities' => $tab_trip_endCity,
-		));
+		$route = 'panier';
+        		return $this->redirect($this->generateUrl($route));
 	}
 	
 	/**
@@ -306,11 +295,7 @@ class PanierController extends Controller
 			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
 		}
  
-		return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
-			'voyages' => $voyages,
-			'etapes' => $etapes,
-			'form_custom_Startcities' => $tab_trip_startCity,
-			'form_custom_Endcities' => $tab_trip_endCity,
-		));
+		$route = 'panier';
+        		return $this->redirect($this->generateUrl($route));
 	}
 }
