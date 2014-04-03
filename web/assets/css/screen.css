@@ -100,12 +100,13 @@ html.not-front body {
 }
 #wrapper-960 .sidebar {
   width: 280px;
-  height: 450px;
+  height: 490px;
   display: inline-block;
   vertical-align: top;
-  background-color: #2980b9;
+  background-color: #1abc9c;
   color: #ecf0f1;
   margin-right: 40px;
+  margin-bottom: 50px;
 }
 #wrapper-960 .sidebar h2 {
   margin: 30px 30px 30px 30px;
@@ -115,17 +116,67 @@ html.not-front body {
   font-weight: bold;
 }
 #wrapper-960 .sidebar p {
-  display: none;
+  font-family: "segoe";
+  color: white;
+  font-size: 18px;
+  width: 220px;
+  margin-left: 30px;
+  font-style: italic;
 }
-#wrapper-960 .sidebar select {
+#wrapper-960 .sidebar .picto {
+  width: 190px;
+  height: 40px;
+  display: inline-block;
   margin: 0px 30px 20px 30px;
+}
+#wrapper-960 .sidebar .picto select {
   padding-left: 50px;
   font-family: "segoe";
   font-size: 21px;
-  color: #2980b9;
+  color: #1abc9c;
   width: 190px;
   height: 40px;
   border: none;
+}
+#wrapper-960 .sidebar .picto-date-depart:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #1abc9c;
+  position: relative;
+  z-index: 2;
+  content: "\e602";
+  left: 10px;
+  top: 35px;
+}
+#wrapper-960 .sidebar .picto-place-depart:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #1abc9c;
+  position: relative;
+  z-index: 2;
+  content: "\e605";
+  left: 10px;
+  top: 35px;
+}
+#wrapper-960 .sidebar .picto-date-arrivee:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #1abc9c;
+  position: relative;
+  z-index: 2;
+  content: "\e602";
+  left: 10px;
+  top: 35px;
+}
+#wrapper-960 .sidebar .picto-place-arrivee:before {
+  font-family: "tripicto";
+  font-size: 30px;
+  color: #1abc9c;
+  position: relative;
+  z-index: 2;
+  content: "\e605";
+  left: 10px;
+  top: 35px;
 }
 #wrapper-960 .sidebar input[type=submit] {
   width: 145px;
@@ -134,10 +185,11 @@ html.not-front body {
   background-color: #f39c12;
   color: white;
   font-size: 21px;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 40%;
   margin-bottom: 15px;
   border: none;
+  cursor: pointer;
 }
 #wrapper-960 .main-content {
   width: 630px;
@@ -249,11 +301,29 @@ html.not-front body {
 #wrapper-960 .main-content .main-informations .main-information-content .add-to-cart .price {
   font-size: 22px;
   display: inline-block;
-  width: 205px;
+  width: 177px;
 }
 #wrapper-960 .main-content .main-informations .main-information-content .add-to-cart a {
-  color: #2980b9;
+  display: inline-block;
+  padding: 5px;
+  background-color: #f39c12;
+  color: #ecf0f1;
+  font-weight: bold;
   text-decoration: none;
+}
+#wrapper-960 .main-content .list h2,
+#wrapper-960 .main-content .secondary-informations h2 {
+  font-size: 20px;
+  color: #2980b9;
+  font-family: "segoe";
+  margin-bottom: 20px;
+}
+#wrapper-960 .main-content .list p,
+#wrapper-960 .main-content .secondary-informations p {
+  margin-bottom: 10px;
+  color: #2980b9;
+  font-family: "segoe";
+  margin-left: 10px;
 }
 #wrapper-960 .main-content .list .list-item,
 #wrapper-960 .main-content .secondary-informations .list-item {
@@ -319,23 +389,11 @@ html.not-front body {
 #wrapper-960 .main-content .secondary-informations {
   margin-top: 30px;
 }
-#wrapper-960 .main-content .secondary-informations h2 {
-  font-size: 20px;
-  color: #2980b9;
-  font-family: "segoe";
-  margin-bottom: 20px;
-}
 #wrapper-960 .main-content .secondary-informations h3 {
   font-size: 18px;
   color: #2980b9;
   font-family: "segoe";
   margin-bottom: 10px;
-}
-#wrapper-960 .main-content .secondary-informations p {
-  margin-bottom: 10px;
-  color: #2980b9;
-  font-family: "segoe";
-  margin-left: 10px;
 }
 
 #header .header-nav {
@@ -380,6 +438,14 @@ html.not-front body {
 #header .header-nav .header-menu li.cart, #header .header-nav .header-menu li.user {
   width: 50px;
   cursor: pointer;
+}
+#header .header-nav .header-menu li.cart a, #header .header-nav .header-menu li.user a {
+  display: inline-block;
+  width: 50px;
+  height: 80px;
+  position: relative;
+  top: -80px;
+  z-index: 3;
 }
 #header .header-nav .header-menu li.cart:before {
   font-family: "tripicto";

@@ -27,7 +27,7 @@
 			</div>
 			<div class="add-to-cart">
 				<span class="price">{{ voyage.price }}€</span>
-				<a href="#">Ajouter au panier ></a>
+				<a href="{{ path('ajouter-voyage-panier',{'id':voyage.id}) }}">Ajouter au panier ></a>
 			</div>
 		</div>
 
