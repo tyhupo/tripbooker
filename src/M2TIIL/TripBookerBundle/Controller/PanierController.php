@@ -39,27 +39,39 @@ class PanierController extends Controller
 	}
 	
 	/**
-	 * @Route("/liste-voyage-panier/", name="liste-voyage-panier")
+	 * @Route("/panier/", name="panier")
 	 */
 	public function listerVoyagePanierAction()
 	{
 		$session = $this->getRequest()->getSession();
 		$voyages = array();
+		$etapes = array();
+		
+
 		if($session->has('panier'))
         {
-			$em = $this->getDoctrine()->getManager();
-			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
-			
 			$panier = $session->get('panier');
+			$em = $this->getDoctrine()->getManager();
+			
+			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
 			$i = 0;
 			foreach ($panier["idVoyages"] as $idVoyage)
 			{
 				$voyages[$i] = $repository->find($idvoyage);
 				$i++;
 			}
+			
+			$repository = $em->getRepository('M2TIILTripBookerBundle:TripStep');
+			$i = 0;
+			foreach ($panier["idEtapes"] as $idEtape)
+			{
+				$etapes[$i] = $repository->find($idEtape);
+				$i++;
+			}
 		}
-		return $this->render('M2TIILTripBookerBundle:listeVoyagePanier:liste-voyage-panier.html.twig', array(
-			'voyages' => $voyages
+		return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
+			'voyages' => $voyages,
+			'etapes' => $etapes
 		));
 	}
 	
