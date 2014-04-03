@@ -16,7 +16,7 @@
 	</div>
 	<div class="list list-voyage list-panier">
 		<h2>Mes voyages ajoutés</h2>
-		{% for voyage in voyages %}
+		{% for key,voyage in voyages %}
 			<div class="voyage-item list-item list-item-panier">
 				<div class="list-item-image">
 					<img src="{{ asset('uploads/' ~ voyage.image.getId ~ '.' ~ voyage.image.getUri) }}" />
@@ -39,7 +39,7 @@
 	</div>
 	<div class="list list-voyage list-panier">
 		<h2>Mes étapes ajoutées</h2>
-		{% for etape in etapes %}
+		{% for key,etape in etapes %}
 			<div class="etape-item list-item list-item-panier">
 				<div class="list-item-image">
 					<img src="{{ asset('uploads/' ~ etape.image.getId ~ '.' ~ etape.image.getUri) }}" />
