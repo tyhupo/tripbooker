@@ -33,11 +33,15 @@ class CommandeController extends Controller
 				$tripOrder->setOrder($order);
 				$voyage = $repository->find($idVoyage);
 				$tripOrder->setTrip($voyage);
+				$order->addOrder($tripOrder);
+				
 				$em->persist($tripOrder);
 				$em->flush();
-				
-				$order->addOrder($tripOrder);
 			}
+			$user->addBookerOrder($order);
+			$em->persist($order);
+			$em->persist($user);
+			$em->flush();
 		}
 		
 		return $this->render('M2TIILTripBookerBundle:Commander:commander.html.twig',array());

@@ -245,7 +245,7 @@ class PanierController extends Controller
 		}
  
 		$route = 'panier';
-        		return $this->redirect($this->generateUrl($route));
+       return $this->redirect($this->generateUrl($route));
 	}
 	
 	/**
@@ -296,6 +296,6 @@ class PanierController extends Controller
 		}
  
 		$route = 'panier';
-        		return $this->redirect($this->generateUrl($route));
+        return $this->redirect($this->generateUrl($route));
 	}
 }
