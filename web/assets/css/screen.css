@@ -723,6 +723,40 @@ html.not-front body {
   padding-right: 10px;
 }
 
+.fos_user_registration_register label,
+.login-form label {
+  font-size: 20px;
+  font-family: "segoe";
+  color: #2980b9;
+  margin-right: 20px;
+  display: inline-block;
+  width: 180px;
+}
+.fos_user_registration_register input,
+.login-form input {
+  width: 250px;
+  height: 30px;
+  background-color: #2980b9 !important;
+  color: #ecf0f1 !important;
+  padding-left: 10px;
+  border: none;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-family: "segoe";
+  margin-right: 30px;
+}
+.fos_user_registration_register input[type=submit],
+.login-form input[type=submit] {
+  width: 150px;
+  height: 40px;
+  background-color: #f39c12 !important;
+  color: #ecf0f1;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  margin-left: 50%;
+}
+
 #footer {
   height: 250px;
   background-color: #2980b9;

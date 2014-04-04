@@ -71,7 +71,7 @@ class CommandeController extends Controller
 		$em = $this->getDoctrine()->getManager();
 
 		/** TODO **/
-		$historiques = array();
+		$voyages = array();
 
 		//Partie François
 		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
@@ -85,7 +85,7 @@ class CommandeController extends Controller
 		return $this->render('M2TIILTripBookerBundle:Historique:historique.html.twig',array(
 			'form_custom_Startcities' => $tab_trip_startCity,
         	'form_custom_Endcities' => $tab_trip_endCity,
-        	'historiques' => $historiques,
+        	'voyages' => $voyages,
         ));
 	}
 }
