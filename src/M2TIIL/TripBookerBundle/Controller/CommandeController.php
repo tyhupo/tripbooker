@@ -15,11 +15,11 @@ class CommandeController extends Controller
 	public function commanderAction()
 	{
 		$session = $this->getRequest()->getSession();
+		$em = $this->getDoctrine()->getManager();
 		
 		if($session->has('panier'))
         {
-			$user = $this->container->get('security.context')->getToken()->getUser();
-			$em = $this->getDoctrine()->getManager();
+			$user = $this->container->get('security.context')->getToken()->getUser();			
 			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
 			
 			$order = new BookerOrder();
@@ -33,13 +33,29 @@ class CommandeController extends Controller
 				$tripOrder->setOrder($order);
 				$voyage = $repository->find($idVoyage);
 				$tripOrder->setTrip($voyage);
+				$order->addOrder($tripOrder);
+				
 				$em->persist($tripOrder);
 				$em->flush();
-				
-				$order->addOrder($tripOrder);
 			}
+			$user->addBookerOrder($order);
+			$em->persist($order);
+			$em->persist($user);
+			$em->flush();
+		}
+
+		//Partie François
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
 		}
 		
-		return $this->render('M2TIILTripBookerBundle:Commander:commander.html.twig',array());
+		return $this->render('M2TIILTripBookerBundle:Commander:commander.html.twig',array(
+			'form_custom_Startcities' => $tab_trip_startCity,
+        			'form_custom_Endcities' => $tab_trip_endCity,
+        		));
 	}
 }
