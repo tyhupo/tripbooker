@@ -21,29 +21,49 @@ class CommandeController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		
 		if($session->has('panier_voyage'))
-        {
+        {	
 			$user = $this->container->get('security.context')->getToken()->getUser();			
 			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
 			
 			$order = new BookerOrder();
 			$order->setReference("Reference");
 			$order->setDate(new \DateTime());
+			$temp = true;
 			
 			foreach($session->get('panier_voyage') as $idVoyage)
-			{
-				$tripOrder = new TripOrder();
-				$tripOrder->setNumber(1);
-				$tripOrder->setOrder($order);
-				$voyage = $repository->find($idVoyage);
-				$tripOrder->setTrip($voyage);
-				$order->addOrder($tripOrder);
-				
-				$em->persist($tripOrder);
+			{	
+				foreach($user->getBookerOrder() as $bookerOrder)
+				{
+					foreach($bookerOrder->getOrders() as $tripOrder)
+					{
+						if($tripOrder->getTrip()->getId() == $idVoyage)
+						{
+							$temp = false;
+							$tripOrder->setNumber(intval($tripOrder->getNumber()) + 1);
+							$em->persist($tripOrder);
+							$em->flush();
+						}
+					}
+				}
+				if($temp)
+				{
+					$tripOrder = new TripOrder();
+					$tripOrder->setNumber(1);
+					$tripOrder->setOrder($order);
+					$voyage = $repository->find($idVoyage);
+					$tripOrder->setTrip($voyage);
+					$order->addOrder($tripOrder);
+					
+					$em->persist($tripOrder);
+				}
 			}
-			$user->addBookerOrder($order);
-			$em->persist($order);
-			$em->persist($user);
-			$em->flush();
+			if($temp)
+			{
+				$user->addBookerOrder($order);
+				$em->persist($order);
+				$em->persist($user);
+				$em->flush();
+			}
 		}
 
 		$session->set('panier_voyage' ,array());
@@ -78,8 +98,11 @@ class CommandeController extends Controller
 		{
 			foreach($bookerOrder->getOrders() as $tripOrder)
 			{
-				$voyages[$i] = $tripOrder->getTrip();
-				$i++;
+				for($j = 0 ; $j < $tripOrder->getNumber(); $j++)
+				{
+					$voyages[$i] = $tripOrder->getTrip();
+					$i++;
+				}
 			}
 		}
 
