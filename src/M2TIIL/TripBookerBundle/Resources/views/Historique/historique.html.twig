@@ -1,7 +1,9 @@
 {% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
 
 {% block sidebar %}
-{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endif %}
 {% endblock %}
 
 {% block titre %}
