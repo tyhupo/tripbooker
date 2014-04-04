@@ -1,0 +1,23 @@
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endblock %}
+
+{% block titre %}
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		Mon Historique
+	{% else %}
+		Identification
+	{% endfor %}
+{% endblock %}
+{% block description %}
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		Voici les commandes que vous avez effectué
+	{% else %}
+		Merci de vous identifier pour visualiser votre historique
+	{% endfor %}
+{% endblock %}
+{% block content %}
+
+{% endblock %}

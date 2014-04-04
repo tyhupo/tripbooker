@@ -8,7 +8,11 @@
 				<li><a href="{{ path('tripbooker_hotels_list') }}">Hôtels</a></li>
 				<li><a href="{{ path('tripbooker_excursions_list') }}">Excursions</a></li>
 				<li class="cart"><a href="{{ path('panier') }}"></a></li>
-				<li class="user"></li>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					<li class="user"><a href=""></a></li>
+				{% else %}
+					<li class="user"><a href="register"></a></li>
+				{% endif %}
 			</ul>
 		</div>
 	</div>
