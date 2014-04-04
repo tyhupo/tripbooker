@@ -8,20 +8,48 @@
 
 {% block titre %}
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-		Mon Historique
+		{{ app.user.username }}
 	{% else %}
 		Identification
 	{% endif %}
 {% endblock %}
 {% block description %}
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-		Voici les commandes que vous avez effectué
+		Vous pouvez sur cette page visualiser votre profil
 	{% else %}
 	{% endif %}
 {% endblock %}
 {% block content %}
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		<h2>Mes informations</h2>
+			<div class="username"><b>Nom : </b>{{ app.user.username }}</div>
+			<div class="usermail"><b>Email : </b>{{ app.user.email }}</div>
 
+			<div class="change"><a href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe</a></div>
+			<div class="logout"><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></div>
+		<h2>Mon historique de commande</h2>
+			<div class="list list-voyage list-panier">
+			<h3>Mes voyages ajoutés</h3>
+			{% for key,voyage in voyages %}
+				<div class="voyage-item list-item list-item-panier">
+					<div class="list-item-image">
+						<img src="{{ asset('uploads/' ~ voyage.image.getId ~ '.' ~ voyage.image.getUri) }}" />
+					</div>
+					<div class="list-item-info">
+						<div class="list-item-title">
+							{{ voyage.title }}
+						</div>
+						<div class="list-item-city">Du
+							{{ voyage.startDate|date('d/m/Y') ~ ' au ' ~ voyage.endDate|date('d/m/Y') }}
+						</div>
+						<span class="list-item-price">{{ voyage.price }}€</span>
+						<a href="{{ path('fiche-voyage',{'id':voyage.id}) }}" class="see">Voir le voyage ></a>
+					</div>
+				</div>
+			{% else %}
+				<p> aucun voyage dans votre historique </p>
+			{% endfor %}
+		</div>
 	{% else %}
 		<div class="login-link">
 			<a href="{{ path('fos_user_security_login') }}">Vous connecter ></a>
