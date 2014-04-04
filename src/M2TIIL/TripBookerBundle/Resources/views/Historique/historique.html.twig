@@ -1,0 +1,31 @@
+{% extends "M2TIILTripBookerBundle::inter-layout.html.twig" %}
+
+{% block sidebar %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	{% include "M2TIILTripBookerBundle::sidebar-custom.html.twig" %}
+{% endif %}
+{% endblock %}
+
+{% block titre %}
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		Mon Historique
+	{% else %}
+		Identification
+	{% endif %}
+{% endblock %}
+{% block description %}
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		Voici les commandes que vous avez effectué
+	{% else %}
+	{% endif %}
+{% endblock %}
+{% block content %}
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+	{% else %}
+		<div class="login-link">
+			<a href="{{ path('fos_user_security_login') }}">Vous connecter ></a>
+			<a href="{{ path('fos_user_registration_register') }}">Vous enregistrer ></a>
+		</div>
+	{% endif %}
+{% endblock %}

@@ -22,7 +22,11 @@
 			<span class="city">{{ etape.startCity ~ ' -> ' ~ etape.endCity }}</span>
 			<div class="add-to-cart">
 				<span class="price">{{ etape.price }}€</span>
-				<a href="{{ path('ajouter-etape-panier',{'id':etape.id}) }}">Ajouter au panier ></a>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					<a href="{{ path('ajouter-etape-panier',{'id':etape.id}) }}">Ajouter au panier ></a>
+				{% else %}
+					<a href="{{ path('ajouter-etape-panier',{'id':etape.id}) }}" class="no-active">Ajouter au panier ></a>
+				{% endif %}
 			</div>
 		</div>
 

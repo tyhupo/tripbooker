@@ -8,11 +8,16 @@
 	Mon panier
 {% endblock %}
 {% block description %}
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
+	{% else %}
+		Vous devez vous connecter pour accéder au panier
+	{% endif %}
 {% endblock %}
 {% block content %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 	<div class="terminate-order">
-		<a href="#">Valider le panier et terminer la commande ></a>
+		<a href="{{ path('commander') }}">Valider le panier et terminer la commande ></a>
 	</div>
 	<div class="list list-voyage list-panier">
 		<h2>Mes voyages ajoutés</h2>
@@ -61,6 +66,7 @@
 		{% endfor %}
 	</div>
 	<div class="terminate-order">
-		<a href="#">Valider le panier et terminer la commande ></a>
+		<a href="{{ path('commander') }}">Valider le panier et terminer la commande ></a>
 	</div>
+{% endif %}
 {% endblock %}

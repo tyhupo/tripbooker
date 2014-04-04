@@ -15,11 +15,11 @@ class CommandeController extends Controller
 	public function commanderAction()
 	{
 		$session = $this->getRequest()->getSession();
+		$em = $this->getDoctrine()->getManager();
 		
 		if($session->has('panier'))
         {
-			$user = $this->container->get('security.context')->getToken()->getUser();
-			$em = $this->getDoctrine()->getManager();
+			$user = $this->container->get('security.context')->getToken()->getUser();			
 			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
 			
 			$order = new BookerOrder();
@@ -43,7 +43,49 @@ class CommandeController extends Controller
 			$em->persist($user);
 			$em->flush();
 		}
+
+		$session->set('panier_voyage' ,array());
+		$session->set('panier_etape' ,array());
 		
-		return $this->render('M2TIILTripBookerBundle:Commander:commander.html.twig',array());
+		//Partie François
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+		
+		return $this->render('M2TIILTripBookerBundle:Commander:commander.html.twig',array(
+			'form_custom_Startcities' => $tab_trip_startCity,
+        			'form_custom_Endcities' => $tab_trip_endCity,
+        		));
+	}
+
+	/**
+	 * @Route("/historique/" , name="historique")
+	 */
+	public function historiqueAction()
+	{
+
+		$em = $this->getDoctrine()->getManager();
+
+		/** TODO **/
+		$historiques = array();
+
+		//Partie François
+		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
+		$tab_trip_startCity = array(); 
+		$tab_trip_endCity = array(); 
+		foreach($packs_trip as $p){
+			$tab_trip_startCity[$p->getId()]=array($p->getStartCity());
+			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
+		}
+		
+		return $this->render('M2TIILTripBookerBundle:Historique:historique.html.twig',array(
+			'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
+        	'historiques' => $historiques,
+        ));
 	}
 }
