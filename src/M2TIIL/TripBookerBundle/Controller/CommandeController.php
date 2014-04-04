@@ -5,7 +5,10 @@ namespace M2TIIL\TripBookerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+use M2TIIL\TripBookerBundle\Entity\BookerOrder;
+use M2TIIL\TripBookerBundle\Entity\TripOrder;
 use M2TIIL\TripBookerBundle\Entity\Trip;
+use M2TIIL\UserBundle\Entity\User;
 
 class CommandeController extends Controller
 {
@@ -17,14 +20,14 @@ class CommandeController extends Controller
 		$session = $this->getRequest()->getSession();
 		$em = $this->getDoctrine()->getManager();
 		
-		if($session->has('panier'))
+		if($session->has('panier_voyage'))
         {
 			$user = $this->container->get('security.context')->getToken()->getUser();			
 			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
 			
 			$order = new BookerOrder();
 			$order->setReference("Reference");
-			$order->setDate(date("d-m-Y"));
+			$order->setDate(new \DateTime());
 			
 			foreach($session->get('panier_voyage') as $idVoyage)
 			{
@@ -36,7 +39,6 @@ class CommandeController extends Controller
 				$order->addOrder($tripOrder);
 				
 				$em->persist($tripOrder);
-				$em->flush();
 			}
 			$user->addBookerOrder($order);
 			$em->persist($order);
@@ -67,11 +69,19 @@ class CommandeController extends Controller
 	 */
 	public function historiqueAction()
 	{
-
 		$em = $this->getDoctrine()->getManager();
-
-		/** TODO **/
-		$historiques = array();
+		$user = $this->container->get('security.context')->getToken()->getUser();
+		$voyages = array();
+		
+		$i = 0;
+		foreach($user->getBookerOrder() as $bookerOrder)
+		{
+			foreach($bookerOrder->getOrders() as $tripOrder)
+			{
+				$voyages[$i] = $tripOrder->getTrip();
+				$i++;
+			}
+		}
 
 		//Partie François
 		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
@@ -85,7 +95,7 @@ class CommandeController extends Controller
 		return $this->render('M2TIILTripBookerBundle:Historique:historique.html.twig',array(
 			'form_custom_Startcities' => $tab_trip_startCity,
         	'form_custom_Endcities' => $tab_trip_endCity,
-        	'historiques' => $historiques,
+        	'voyages' => $voyages,
         ));
 	}
 }
