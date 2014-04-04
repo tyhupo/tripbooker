@@ -44,6 +44,9 @@ class CommandeController extends Controller
 			$em->flush();
 		}
 
+		$session->set('panier_voyage' ,array());
+		$session->set('panier_etape' ,array());
+		
 		//Partie François
 		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
 		$tab_trip_startCity = array(); 
