@@ -202,6 +202,14 @@ html.not-front body {
   color: #2980b9;
   margin-bottom: 25px;
 }
+#wrapper-960 .main-content .login-link a {
+  display: block;
+  color: #2980b9;
+  font-family: "segoe";
+  font-size: 18px;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
 #wrapper-960 .main-content .inter-description {
   font-size: 18px;
   color: #2980b9;
@@ -310,6 +318,11 @@ html.not-front body {
   color: #ecf0f1;
   font-weight: bold;
   text-decoration: none;
+}
+#wrapper-960 .main-content .main-informations .main-information-content .add-to-cart .no-active {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #777777;
 }
 #wrapper-960 .main-content .list h2,
 #wrapper-960 .main-content .secondary-informations h2 {

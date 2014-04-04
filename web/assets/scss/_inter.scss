@@ -122,6 +122,17 @@
 			margin-bottom: 25px;
 		}
 
+		.login-link{
+			a{
+				display: block;
+				color: $blue;
+				font-family: "segoe";
+				font-size: 18px;
+				text-decoration: none;
+				margin-bottom: 10px;
+			}
+		}
+
 		.inter-description{
 			font-size: 18px;
 			color: $blue;
@@ -241,6 +252,12 @@
 						color: $gray;
 						font-weight: bold;
 						text-decoration: none;
+					}
+
+					.no-active{
+						pointer-events: none;
+   						cursor: not-allowed;
+   						background-color: #777777;
 					}
 				}
 			}

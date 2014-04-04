@@ -27,7 +27,11 @@
 			</div>
 			<div class="add-to-cart">
 				<span class="price">{{ voyage.price }}€</span>
-				<a href="{{ path('ajouter-voyage-panier',{'id':voyage.id}) }}">Ajouter au panier ></a>
+				{% if is_granted("ROLE") %}
+					<a href="{{ path('ajouter-voyage-panier',{'id':voyage.id}) }}">Ajouter au panier ></a>
+				{% else %}
+					<a href="{{ path('ajouter-voyage-panier',{'id':voyage.id}) }}" class="no-active">Ajouter au panier ></a>
+				{% endif %}
 			</div>
 		</div>
 
