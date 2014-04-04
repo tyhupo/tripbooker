@@ -143,22 +143,22 @@ class PanierController extends Controller
 	{
 		$session = $this->getRequest()->getSession();
 		$em = $this->getDoctrine()->getManager();
-         
-        if(!$session->has('panier_voyage'))
-        {
-            $session->set('panier_voyage' ,array());
-        }
+		 
+		if(!$session->has('panier_voyage'))
+		{
+			$session->set('panier_voyage' ,array());
+		}
 		
 		if(!$session->has('panier_etape'))
-        {
-            $session->set('panier_etape' ,array());
-        }
+		{
+			$session->set('panier_etape' ,array());
+		}
 
 		$voyages = array();
 		$etapes = array();
 
 		if($session->has('panier_voyage'))
-        {
+		{
 			$i = 0;
 			$repository = $em->getRepository('M2TIILTripBookerBundle:Trip');
 			foreach($session->get('panier_voyage') as $id_voyage)
@@ -169,7 +169,7 @@ class PanierController extends Controller
 		}
 		
 		if($session->has('panier_etape'))
-        {
+		{
 			$i = 0;
 			$repository = $em->getRepository('M2TIILTripBookerBundle:TripStep');
 			foreach($session->get('panier_etape') as $id_etape)
@@ -179,7 +179,7 @@ class PanierController extends Controller
 			}
 		}
 		
-        //Partie François
+		//Partie François
 		$packs_trip = $em->getRepository('M2TIILTripBookerBundle:TripStep')->findAll();
 		$tab_trip_startCity = array(); 
 		$tab_trip_endCity = array(); 
@@ -244,8 +244,12 @@ class PanierController extends Controller
 			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
 		}
  
-		$route = 'panier';
-       return $this->redirect($this->generateUrl($route));
+		return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
+        	'voyages' => $voyages,
+			'etapes' => $etapes,
+			'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
+        ));
 	}
 	
 	/**
@@ -295,7 +299,11 @@ class PanierController extends Controller
 			$tab_trip_endCity[$p->getId()]=array($p->getEndCity());
 		}
  
-		$route = 'panier';
-        return $this->redirect($this->generateUrl($route));
+		return $this->render('M2TIILTripBookerBundle:Panier:panier.html.twig', array(
+        	'voyages' => $voyages,
+			'etapes' => $etapes,
+			'form_custom_Startcities' => $tab_trip_startCity,
+        	'form_custom_Endcities' => $tab_trip_endCity,
+        ));
 	}
 }
